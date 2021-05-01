@@ -1,52 +1,177 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Couch Co-Op DB
 
-Welcome USER_NAME,
-
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI you can use:
-
-`heroku login -i`
-
-If you have Multi-Factor Authentication (MFA) enabled then use the API key that was generated for you at [Heroku](https://dashboard.heroku.com/account) as your password.
-This API key is unique and private to you so do not share it. If you accidently make it public then you can create a new one with _Regenerate API Key_.
-
-## Updates Since The Instructional Video
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+Couch Co-Op DB is a website for people that enjoy playing couch co-op videogames. The idea for this project is to create a space where players can become registered users and add their favourite games, share tips and tricks and rate them. Site visitors can read about the games and purchase them via a hyperlink to Steam that will provide them with a 20% discount voucher.
 
 ---
 
-Happy coding!
+### **Contents** ###
+
+- [UX](#ux-user-experience)
+    - [Project Goals](#project-goals)
+    - [User Stories](#user-stories)
+    - [Site Owner Goals](#site-owner-goals)
+    - [Design](#design)
+        - [Wireframes](#wireframes)
+        - [Database](#database)
+        - [Fonts](#fonts)
+        - [Colors](#colors)
+- [Features](#features)
+    - [Existing Features](#existing-features)
+    - [Features Left to Implement](#features-left-to-implement)
+- [Technologies Used](#technologies-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
+    - [Content](#content)
+    - [Media](#media)
+    - [Acknowledgements](#acknowledgements)
+
+## UX (User Experience) ##
+
+### **Project Goals** ###
+
+The **goal** of this project is to build a website that allows people passionate about videogames to find the most played couch co-op games added by registered users, read comments from the community and get a direct link to purchase the games with a discount voucher.
+
+### **User Stories** ###
+#### **New Site Visitor** ####
+- As a user, I want to be able to easily navigate to the different site pages.
+- As a user, I want to see a page containing all games.
+- As a user, I want to be able to register on the site.
+- As a user, I want to be able to add new games and add comments.
+- As a user, I want to be able to read other member’s reviews.
+- As a user, I want to be able to search the site by games names, number of players and platform.
+- As a user, I want to be able to find direct links to purchase the games I like.
+
+#### **Returning Site Visitor** ####
+- As a user, I want to see my user account profile page.
+- As a user, I want to be able to update and/or delete any of the games I have added.
+- As a user, I want to be able to mark games as favorites, so I can easily see them from my account page. 
+- As a user, I want to be able to leave comments on the other games.
+
+#### **Site Administrator** ####
+- As an **Administrator**, I want to be able to add, edit and delete the games details.
+
+### **Site Owner Goals** ###
+- Create a co-op gaming community to increase site owner's following on Twitch and rest of social media. 
+- Earn money every time a user purchases a game via the link provided on my site.
+ 
+
+### **Design** ###
+
+#### **Wireframes** ####
+The wireframes for the website have been created with [Figma](https://www.figma.com/) and are available [here](https://www.figma.com/file/Z4haTyThhzKwdy75zFupo5/Couch-Co-Op-DB?node-id=0%3A1).
+Tablet and mobile devices share the same layout, while a separate design has been created for the desktop views. 
+
+#### **Database** ####
+
+#### - users collection
+**Title**|**Key in Collection**|**Data Type**
+:-----:|:-----:|:-----:
+User ID|_id|ObjectId()
+Username|username|String
+Password|password|String
+Admin|is_admin|String
+
+#### - games collection
+**Title**|**Key in Collection**|**Data Type**
+:-----:|:-----:|:-----:
+Game ID|_id|ObjectId()
+Name|name|String
+Description|description|String
+Image|image_url|String
+Players|number_players|Integer
+Release Year|year_release|Integer
+Genre|genre|String
+Developer|developer|String
+Publisher|publisher|String
+Platforms|platforms|String
+Shop|shop_link|String
+
+#### - favourites collection
+**Title**|**Key in Collection**|**Data Type**
+:-----:|:-----:|:-----:
+Game ID|_id|ObjectId()
+User ID|_id|ObjectId()
+
+#### - comments collection
+**Title**|**Key in Collection**|**Data Type**
+:-----:|:-----:|:-----:
+Game ID|_id|ObjectId()
+User ID|_id|ObjectId()
+Date|date_submitted|Timestamp
+Comment|comment|String
+
+#### Data Types ####
+
+- ObjectId
+- String
+- Int32
+- Date
+
+#### **Fonts** ####
+Roboto Google font with a Sans Serif fallback has been chosen for the entire website.
+
+#### **Colors** ####
+The color scheme is based on the colours of the *Moving Out* videogame and generated through the [Coolors](https://coolors.co/) website.
+To keep it simple and relatable to the videogames, a two colors palette has been used, see [here](https://coolors.co/f7ba2e-db3549).
+
+[Back to contents](#contents)
+
+---
+
+## Features
+ 
+### Existing Features
+The **features** on the website will:
+- Allow site visitor to register a user account and access more functionalities, such as: add, comment and mark games as favourite.
+- Display all couch co-op games that the community has added to enable visitors to read all the details and comments sharing tips and tricks.
+- Provide a direct shopping link for each game to the Steam store, where they can get a 20% discount voucher when purchasing it.
+
+I achieve this by:
+
+- Providing registration and user authentication for users to create an account and see their account details.
+- Enabling users to add new games and edit their entries. 
+- Linking the game store to each game directly on the website.
+
+For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+
+In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
+
+### Features Left to Implement
+- Create a dashboard to provide site visitors with statistics about all the games.
+- Implement a star rating functionality that allows the users to upvote and downvote games depending on their preferences.
+
+[Back to contents](#contents)
+
+---
+
+## Technologies Used
+
+
+[Back to contents](#contents)
+
+---
+
+## Testing
+
+[Back to contents](#contents)
+
+---
+
+## Deployment
+
+[Back to contents](#contents)
+
+---
+
+## Credits
+
+### Content
+
+### Media
+
+### Acknowledgements
+
+[Back to contents](#contents)
+
+---
