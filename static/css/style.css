@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* --------------------------------------------- Global styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    overflow-x: hidden;
+}
+
+/* --------------------------------------------- Website colors */
+:root {
+    --red: #db3549;
+    --yellow: #f7ba2e;
+}
+
+/* --------------------------------------------- Website navigation */
+nav {
+    background-color: var(--red);
+}
+
+nav .brand-logo {
+    margin-left: 15px;
+    font-size: 2.8rem;
+}
+
+nav ul li {
+    font-size: 2.5rem;
+}
+
+/* --------------------------------------------- Media Queries */
+@media screen and (max-width: 464px) {
+    nav .brand-logo,
+    ul li h4 {
+        font-size: 1.5rem;
+    }
+}
