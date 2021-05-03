@@ -81,7 +81,20 @@ def account(username):
     # get the session user's username from the db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("account.html", username=username)
+    
+    if session["user"]:
+        return render_template("account.html", username=username)
+
+    return redirect(url_for("sign_in"))
+
+
+@app.route("/sign_out")
+def sign_out():
+    # remove user from session cookies
+    session.clear()
+    flash("You have been signed out")
+    return redirect(url_for("sign_in"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
