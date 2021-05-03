@@ -31,6 +31,21 @@ nav ul li {
     font-size: 2.5rem;
 }
 
+/* --------------------------------------------- Sign Up page */
+body > div.row > form > div > div:nth-child(-n+2) > div > i.active {
+    color:#000;
+}
+
+.btn-large {
+    background-color: var(--red);
+    color: #fff;
+    font-weight: 700;
+}
+
+.btn-large:hover {
+    background-color: #BF2234;
+}
+
 /* --------------------------------------------- Media Queries */
 @media screen and (max-width: 464px) {
     nav .brand-logo,
