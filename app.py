@@ -43,6 +43,7 @@ def sign_up():
         # put the new user into session cookie
         session["user"] = request.form.get("username").lower()
         flash("Signed Up Successfully!")
+        return redirect(url_for("account", username=session["user"]))
     return render_template("sign_up.html")
 
 
@@ -58,7 +59,10 @@ def sign_in():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
+                    flash("Welcome, {}".format(
+                        request.form.get("username")))
+                    return redirect(url_for(
+                        "account", username=session["user"]))
             else:
                 # invalid password match
                 flash("Username and/or password is incorrect")
@@ -71,6 +75,13 @@ def sign_in():
 
     return render_template('sign_in.html')
 
+
+@app.route("/account/<username>", methods=["GET", "POST"])
+def account(username):
+    # get the session user's username from the db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    return render_template("account.html", username=username)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

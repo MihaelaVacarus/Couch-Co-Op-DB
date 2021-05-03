@@ -30,7 +30,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#">Games</a></li>
-                    <li><a href="#">My Account</a></li>
+                    <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
                     <li><a href="#">Add Game</a></li>
                     <li><a href="#">Manage Games</a></li>
                     <li><a href="#">Sign Out</a></li>
@@ -45,7 +45,7 @@
             <li><h4 class="center-align">Couch Co-Op DB</h4></li>
             <li><a href="#">Home</a></li>
             <li><a href="#">Games</a></li>
-            <li><a href="#">My Account</a></li>
+            <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
             <li><a href="#">Add Game</a></li>
             <li><a href="#">Manage Games</a></li>
             <li><a href="#">Sign Out</a></li>
