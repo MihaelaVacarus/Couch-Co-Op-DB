@@ -66,8 +66,8 @@
         </ul>
     </header>
 
+    <!-- Flash messages -->
     <section>
-        <!-- Flash messages -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -79,18 +79,56 @@
         {% endwith %}
     </section>
 
+    <!-- Block content for the Home page -->
     <div>
         {% block home_content %}
         {% endblock %}
     </div>
 
-
+    <!-- Block for main content -->
     <main class="container">
-
-    {% block content %}
-    {% endblock %}
-
+        {% block content %}
+        {% endblock %}
     </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row" id="footer-sections">
+                <div class="col l4 s12">
+                    <h5 class="white-text">FOLLOW US</h5>
+                    <ul id="social-links">
+                        <li><a class="grey-text text-lighten-3" href="https://www.twitch.tv/!"><i
+                                    class="fab fa-twitch"></i></a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://store.steampowered.com/"><i
+                                    class="fab fa-steam"></i></a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://twitter.com/?lang=en"><i
+                                    class="fab fa-twitter-square"></i></a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.youtube.com/"><i
+                                    class="fab fa-youtube-square"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col l4 s12">
+                    <h5 class="white-text">WHO ARE WE</h5>
+                    <p class="grey-text text-lighten-4">
+                        My name is Ada and I run this website with my brother Dennis.
+                        We enjoy streaming our gaming sessions on Twitch and we decided to create 
+                        a community to share tips and tricks around couch co-op games.
+                    </p>
+                </div>
+                <div class="col l4 s12">
+                    <h6><a class="grey-text text-lighten-3" href="#">Website Terms of Use</a></h5>
+                    <h6><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></h6>
+                </div>
+                </div>
+                </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                &copy; 2021 Couch Co-Op Games
+            </div>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
