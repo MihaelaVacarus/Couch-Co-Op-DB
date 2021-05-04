@@ -46,10 +46,38 @@ body > div.row > form > div > div:nth-child(-n+2) > div > i.active {
     background-color: #BF2234;
 }
 
+/* --------------------------------------------- Home page */
+.parallax-container {
+    height: 400px;
+}
+
+.parallax-container img {
+    width: 640px;
+    height: auto;
+}
+
+#home-header {
+    margin-top: 0px;
+}
+
+#home-intro {
+        text-align: justify;
+}
+
 /* --------------------------------------------- Media Queries */
 @media screen and (max-width: 464px) {
+    /* --------------------------------------------- Website navigation */
     nav .brand-logo,
     ul li h4 {
         font-size: 1.5rem;
+    }
+
+    /* --------------------------------------------- Home navigation */
+    .parallax-container {
+    height: 200px;
+    }
+
+    #home-header {
+        font-size: 18px;
     }
 }

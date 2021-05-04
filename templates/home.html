@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block home_content %}
+
+    <div class="parallax-container">
+        <div class="parallax ">
+            <img src="static/images/parallaxOne.png" alt="Moving Out and Overcooked game covers">
+        </div>
+    </div>
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header" id="home-header"><i class="fas fa-gamepad"></i> Welcome to Couch Co-Op DB!</h2>
+            <p class="grey-text text-darken-3 lighten-3" id="home-intro">
+                This little corner on the Internet is for us people that enjoy playing videogames with friends, family
+                and/or partner <i class="fas fa-user-friends"></i>.
+                Here you can check out what are the most recommended games by our community and add your own!
+                Have a look <a href="{{ url_for('get_games') }}">here</a> or <a href="{{ url_for('sign_up') }}">sign
+                    up</a>
+                to join
+                the community, share your tips and tricks and get rewarded with exclusive discounts!
+            </p>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="static/images/parallaxTwo.png" alt="Lovers in a Dangerous Spacetime and Unravel game covers">
+        </div>
+    </div>
+
+{% endblock %}
