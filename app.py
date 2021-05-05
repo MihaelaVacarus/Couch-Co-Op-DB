@@ -114,7 +114,7 @@ def sign_out():
 @app.route("/get_games")
 def get_games():
     games = mongo.db.games.find()
-    return render_template("games.html", games=games)
+    return render_template("get_games.html", games=games)
 
 
 if __name__ == "__main__":

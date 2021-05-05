@@ -31,6 +31,16 @@ nav ul li {
     font-size: 2.5rem;
 }
 
+/* --------------------------------------------- Games page */
+#game-name a {
+    color: var(--red)
+}
+
+#game-name a:hover {
+    color: #000;
+}
+
+
 /* --------------------------------------------- Sign Up page */
 body > div.row > form > div > div:nth-child(-n+2) > div > i.active {
     color:#000;
