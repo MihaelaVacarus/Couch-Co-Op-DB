@@ -57,8 +57,8 @@
         <ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align">Couch Co-Op DB</h4></li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('get_games') }}">Games</a></li>
             {% if session.user %}
-                <li><a href="{{ url_for('get_games') }}">Games</a></li>
                 <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
                 <li><a href="#">Add Game</a></li>
                 {% if session.user|lower == "admin"|lower %}
