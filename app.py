@@ -1,4 +1,10 @@
-import os 
+"""
+Code adapted from the Task Manager Flask app
+from the CI course material.
+"""
+
+import os
+import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -17,23 +23,23 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+# Render Home template
+
+
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template("home.html")
 
 
-@app.route("/get_games")
-def get_games():
-    games = mongo.db.games.find()
-    return render_template("games.html", games=games)
+# User authentication and management
 
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
-            {"username":request.form.get("username").lower()})
+            {"username": request.form.get("username").lower()})
 
         if existing_user:
             flash("Username already exists")
@@ -41,7 +47,9 @@ def sign_up():
 
         sign_up = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "is_admin": "off",
+            "date_joined": datetime.datetime.utcnow()
         }
         mongo.db.users.insert_one(sign_up)
 
@@ -57,17 +65,17 @@ def sign_in():
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
-            {"username":request.form.get("username").lower()})
+            {"username": request.form.get("username").lower()})
 
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
-                    return redirect(url_for(
-                        "account", username=session["user"]))
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "account", username=session["user"]))
             else:
                 # invalid password match
                 flash("Username and/or password is incorrect")
@@ -86,7 +94,7 @@ def account(username):
     # get the session user's username from the db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    
+
     if session["user"]:
         return render_template("account.html", username=username)
 
@@ -101,8 +109,17 @@ def sign_out():
     return redirect(url_for("sign_in"))
 
 
+# Games CRUD functionality
+
+@app.route("/get_games")
+def get_games():
+    games = mongo.db.games.find()
+    return render_template("games.html", games=games)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
+
 
