@@ -40,7 +40,9 @@
                         {% if session.user %}
                             <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
                             <li><a href="#">Add Game</a></li>
-                            <li><a href="#">Manage Games</a></li>
+                            {% if session.user|lower == "admin"|lower %}
+                                <li><a href="#">Manage Games</a></li>
+                            {% endif %}
                             <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
                         {% else %}
                             <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
@@ -59,7 +61,9 @@
                 <li><a href="#">Games</a></li>
                 <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
                 <li><a href="#">Add Game</a></li>
-                <li><a href="#">Manage Games</a></li>
+                {% if session.user|lower == "admin"|lower %}
+                    <li><a href="#">Manage Games</a></li>
+                {% endif %}
                 <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
             {% else %}
                 <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
