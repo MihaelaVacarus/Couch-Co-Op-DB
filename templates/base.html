@@ -30,24 +30,26 @@
 
     <header>
         <!-- Top navbar -->
-        <nav class="nav-extended">
-            <div class="nav-wrapper">
-                <a href="{{ url_for('home') }}" class="brand-logo">Couch Co-Op DB</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Games</a></li>
-                    {% if session.user %}
-                        <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
-                        <li><a href="#">Add Game</a></li>
-                        <li><a href="#">Manage Games</a></li>
-                        <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
-                    {% else %}
-                        <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
-                        <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
+        <div class="navbar-fixed">
+            <nav class="nav-extended">
+                <div class="nav-wrapper">
+                    <a href="{{ url_for('home') }}" class="brand-logo">Couch Co-Op DB</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#">Games</a></li>
+                        {% if session.user %}
+                            <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
+                            <li><a href="#">Add Game</a></li>
+                            <li><a href="#">Manage Games</a></li>
+                            <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+                            <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
 
         <!-- Mobile side navbar -->
         <ul class="sidenav" id="mobile-demo">
