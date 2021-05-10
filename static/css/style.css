@@ -40,6 +40,15 @@ nav ul li {
     color: #000;
 }
 
+#clear-button {
+    background-color: var(--red);
+    width: 90px;
+}
+
+#search-button {
+    background-color: #81a042;
+    width: 90px;
+}
 
 /* --------------------------------------------- Sign Up page */
 body > div.row > form > div > div:nth-child(-n+2) > div > i.active {

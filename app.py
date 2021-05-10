@@ -113,13 +113,22 @@ def sign_out():
 
 @app.route("/get_games")
 def get_games():
-    games = mongo.db.games.find()
-    return render_template("get_games.html", games=games)
+    games = list(mongo.db.games.find())
+    return render_template(
+        "get_games.html",
+        games=games)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    games = list(mongo.db.games.find(
+        {"$text": {"$search": query}}))
+    return render_template(
+        "get_games.html", games=games)
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
-
-
