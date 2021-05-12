@@ -119,6 +119,33 @@ def get_games():
         games=games)
 
 
+@app.route("/add_game", methods=["GET", "POST"])
+def add_game():
+    if request.method == "POST":
+        shop_link = (
+            "https://store.steampowered.com/search/?term=" +
+            request.form.get("name"))
+        game = {
+            "name": request.form.get("name"),
+            "description": request.form.get("description"),
+            "image_url": request.form.get("image_url"),
+            "number_players": request.form.get("number_players"),
+            "year_release": request.form.get("year_release"),
+            "genre": request.form.get("genre"),
+            "developer": request.form.get("developer"),
+            "publisher": request.form.get("publisher"),
+            "platforms": request.form.get("platforms"),
+            "shop_link": shop_link,
+            "created_by": session["user"],
+            "created_date": datetime.datetime.utcnow(),
+        }
+        mongo.db.games.insert_one(game)
+        flash("Game Successfully Submitted")
+        return redirect(url_for("get_games"))
+    genres = mongo.db.genres.find().sort("genre", 1)
+    return render_template("add_game.html", genres=genres)
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
