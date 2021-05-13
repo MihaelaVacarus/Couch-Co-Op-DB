@@ -15,7 +15,22 @@
                 </div>
             </div>
             <div class="col s12 l6">
-                <h5>{{ game.name }}</h5>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h5>{{ game.name }}</h5>
+                            </td>
+                            <!-- Edit and delete buttons for registered users -->
+                            <td class="right">
+                                <a href="" class="btn-small waves-effect waves-light tooltipped blue darken-1" data-position="top"
+                                    data-tooltip="Edit" target="_blank"><i class="far fa-edit"></i></a>
+                                <a href="" class="btn-small waves-effect waves-light tooltipped red accent-4" data-position="top"
+                                    data-tooltip="Delete" target="_blank"><i class="far fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <p id="game-description">{{ game.description }}</p>
                 <table>
                     <tbody>
