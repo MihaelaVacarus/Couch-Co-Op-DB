@@ -50,18 +50,31 @@ nav ul li {
     width: 90px;
 }
 
+/* --------------------------------------------- Individual game page */
+#book-buttons {
+    padding: 10px 10px 10px 0px;
+}
+
+#game-description {
+    text-align: justify;
+}
+
 /* --------------------------------------------- Sign Up page */
 body > div.row > form > div > div:nth-child(-n+2) > div > i.active {
     color:#000;
 }
 
-.btn-large {
+.btn-large,
+.btn-small {
     background-color: var(--red);
     color: #fff;
     font-weight: 700;
 }
 
-.btn-large:hover {
+.btn-large:hover,
+.btn-small:hover,
+.btn-large:visited,
+.btn-small:visited {
     background-color: #BF2234;
 }
 

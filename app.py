@@ -119,6 +119,12 @@ def get_games():
         games=games)
 
 
+@app.route("/game/<game_id>", methods=["GET", "POST"])
+def game(game_id):
+    game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    return render_template("game.html", game=game)
+
+
 @app.route("/add_game", methods=["GET", "POST"])
 def add_game():
     if request.method == "POST":

@@ -30,7 +30,7 @@
                     <div class="card-image">
                         <img src="{{ game.image_url }}">
                         <div class="card-action" id="game-name">
-                            <a href="#">{{ game.name }}</a>
+                            <a href="{{ url_for('game', game_id=game._id) }}">{{ game.name }}</a>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- Game card with details -->
+    <div class="container">
+        <div class="row card-panel">
+            <div class="col s12 l6">
+                <img src="{{ game.image_url }}" class="responsive-img" alt="Game cover">
+                <!-- Favorite and shop buttons for the game -->
+                <div id="book-buttons">
+                    <a href="#" class="btn-small waves-effect waves-light tooltipped" data-position="bottom"
+                        data-tooltip="Like" target="_blank"><i class="far fa-heart"></i></a>
+                    <a href="{{ game.shop_link }}" class="btn-small waves-effect waves-light tooltipped" data-position="bottom"
+                        data-tooltip="Shop" target="_blank"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+            <div class="col s12 l6">
+                <h5>{{ game.name }}</h5>
+                <p id="game-description">{{ game.description }}</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-headset prefix"></i></td>
+                            <td> Up to {{ game.number_players }} players</td>
+                        </tr>
+                        <tr>
+                            <td><i class="far fa-calendar prefix"></i></td>
+                            <td>Released in {{ game.year_release }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-tag prefix"></i></td>
+                            <td>Genre: {{ game.genre.capitalize() }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="far fa-file-code prefix"></i></td>
+                            <td>Developer: {{ game.developer }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-ghost prefix"></i></td>
+                            <td>Publisher: {{ game.publisher }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-desktop prefix"></i></td>
+                            <td>Platforms: {{ game.platforms }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="far fa-paper-plane"></i></td>
+                            <td>Submitted by {{ game.created_by.capitalize() }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
