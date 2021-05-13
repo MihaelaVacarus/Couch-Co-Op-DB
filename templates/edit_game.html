@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">Edit Game</h3>
+
+    <div class="row card-panel z-depth-3">
+        <form class="col s12" method="POST" action="{{ url_for('edit_game', game_id=game._id) }}">
+            <!-- Input for game name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-gamepad prefix"></i>
+                    <input id="name" name="name" type="text" minlength="5" maxlength="30" class="validate" required>
+                    <label for="name">Game Name</label>
+                </div>
+            </div>
+            <!-- Input for game description -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-edit prefix"></i>
+                    <textarea id="description" name="description" minlength="10" class="validate materialize-textarea"
+                        maxlength="300" required></textarea>
+                    <label for="description">Game Description</label>
+                </div>
+            </div>
+            <!-- Input for game image URL -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="far fa-image prefix"></i>
+                    <input type="text" id="image_url" name="image_url" class="validate">
+                    <label for="image_url">Game Image URL</label>
+                </div>
+            </div>
+            <!-- Input for number of players -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-headset prefix"></i>
+                    <input type="text" id="number_players" name="number_players" class="validate" required>
+                    <label for="number_players">Enter max number of players (e.g. 4)</label>
+                </div>
+            </div>
+            <!-- Input for year of release -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="far fa-calendar prefix"></i>
+                    <input type="text" id="year_release" name="year_release" class="validate datepicker" required>
+                    <label for="year_release">Year of Release</label>
+                </div>
+            </div>
+            <!-- Input for genre -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-tag prefix"></i>
+                    <select name="genre" id="genre" class="validate" required>
+                        <option value="" disabled selected>Choose the Genre</option>
+                        {% for i in genres %}
+                            <option value="{{ i.genre }}">{{ i.genre }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="genre">Genre</label>
+                </div>
+            </div>
+            <!-- Input for developer -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="far fa-file-code prefix"></i>
+                    <input type="text" id="developer" name="developer" class="validate" required>
+                    <label for="developer">Developer</label>
+                </div>
+            </div>
+            <!-- Input for publisher -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-ghost prefix"></i>
+                    <input type="text" id="publisher" name="publisher" class="validate" required>
+                    <label for="publisher">Publisher</label>
+                </div>
+            </div>
+            <!-- Input for platforms -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-desktop prefix"></i>
+                    <input type="text" id="platforms" name="platforms" class="validate" required>
+                    <label for="platforms">Platforms</label>
+                </div>
+            </div>
+            <!-- Submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large">
+                    Update Game <i class="far fa-edit right"></i>
+                </button>
+            </div>
+        </div>
+        </form>
+    </div>
+
+{% endblock %}
