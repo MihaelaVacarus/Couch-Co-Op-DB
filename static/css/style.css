@@ -59,6 +59,10 @@ nav ul li {
     text-align: justify;
 }
 
+#add-comment {
+    background-color: var(--red);
+}
+
 /* --------------------------------------------- Edit game page */
 #update-button {
     background-color: #81a042;
