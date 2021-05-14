@@ -186,6 +186,20 @@ def edit_game(game_id):
         return render_template("edit_game.html", game=game, genres=genres)          
 
 
+@app.route("/delete_game/<game_id>")
+def delete_game(game_id):
+    if session["user"]:
+        username = mongo.db.users.find_one(
+                {"username": session["user"]})
+        game = mongo.db.games.find_one(
+                {"_id": ObjectId(game_id)})
+        if (session["user"] == game["created_by"] or
+                username["is_admin"] == "on"):
+            mongo.db.games.delete_one({"_id": ObjectId(game_id)})
+            flash("Game Successfully Deleted")
+            return redirect(url_for("get_games"))
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
