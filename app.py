@@ -152,6 +152,40 @@ def add_game():
     return render_template("add_game.html", genres=genres)
 
 
+@app.route("/edit_game/<game_id>", methods=["GET", "POST"])
+def edit_game(game_id):
+    if session["user"]:
+        if request.method == "POST":
+            username = mongo.db.users.find_one(
+                {"username": session["user"]})
+            game = mongo.db.games.find_one(
+                {"_id": ObjectId(game_id)})
+
+            if (session["user"] == game["created_by"] or
+                    username["is_admin"] == "on"):
+                shop_link = (
+                    "https://store.steampowered.com/search/?term=" + request.form.get("name"))
+                update_game = {
+                    "name": request.form.get("name"),
+                    "description": request.form.get("description"),
+                    "image_url": request.form.get("image_url"),
+                    "number_players": request.form.get("number_players"),
+                    "year_release": request.form.get("year_release"),
+                    "genre": request.form.get("genre"),
+                    "developer": request.form.get("developer"),
+                    "publisher": request.form.get("publisher"),
+                    "platforms": request.form.get("platforms"),
+                    "shop_link": shop_link
+                }
+                mongo.db.games.update_one(
+                    {"_id": ObjectId(game_id)},
+                    {"$set": update_game})
+                flash("Game Successfully Updated")
+        game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+        genres = mongo.db.genres.find().sort("genre", 1)
+        return render_template("edit_game.html", game=game, genres=genres)          
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")

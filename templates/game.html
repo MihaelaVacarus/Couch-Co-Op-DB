@@ -51,12 +51,14 @@
                 </table>
             </div>
             <!-- Edit and delete buttons for registered users -->
-            <div class="right" id="book-buttons">
-                <a href="{{ url_for('edit_game', game_id=game._id) }}" class="btn-small waves-effect waves-light tooltipped blue darken-1" data-position="top"
-                    data-tooltip="Edit" target="_blank"><i class="far fa-edit"></i></a>
-                <a href="" class="btn-small waves-effect waves-light tooltipped red accent-4" data-position="top"
-                    data-tooltip="Delete" target="_blank"><i class="far fa-trash-alt"></i></a>
-            </div>
+            {% if session.user|lower == game.created_by|lower or session.user|lower == 'admin' %}
+                <div class="right" id="book-buttons">
+                    <a href="{{ url_for('edit_game', game_id=game._id) }}" class="btn-small waves-effect waves-light tooltipped blue darken-1" data-position="top"
+                        data-tooltip="Edit" target="_blank"><i class="far fa-edit"></i></a>
+                    <a href="" class="btn-small waves-effect waves-light tooltipped red accent-4" data-position="top"
+                        data-tooltip="Delete" target="_blank"><i class="far fa-trash-alt"></i></a>
+                </div>
+            {% endif %}
         </div>
     </div>
     
