@@ -77,7 +77,7 @@
     <!-- Add comment section -->
     <div class="container">
         <div class="row card-panel z-depth-3">
-            <form class="col s12" method="POST" action="#">
+            <form class="col s12" method="POST" action="{{ url_for('add_comment', game_id=game._id) }}">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="far fa-comment-dots prefix"></i>

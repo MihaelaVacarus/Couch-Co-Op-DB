@@ -209,6 +209,25 @@ def search():
         "get_games.html", games=games)
 
 
+@app.route("/add_comment/<game_id>", methods=["POST", "GET"])
+def add_comment(game_id):
+    if session["user"]:
+        if request.method == "POST":
+            username = mongo.db.users.find_one(
+                {"username": session["user"]})
+            game = mongo.db.games.find_one(
+                {"_id": ObjectId(game_id)})
+            comment = {
+                "game_id": game,
+                "user_id": username,
+                "date_submitted": datetime.datetime.utcnow(),
+                "text": request.form.get("comment")
+            }
+            mongo.db.comments.insert_one(comment)
+            flash("Comment Successfully Posted!")
+            return render_template("game.html", game=game, comment=comment)   
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
