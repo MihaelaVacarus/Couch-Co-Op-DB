@@ -92,5 +92,21 @@
         </div>
     </div>
     
+    <!-- Game's comments section -->
+    <div class="container">
+        <div class="row card-panel z-depth-3">
+            <h5>What other gamers say about <strong>{{ game.name }}</strong></h5>
+            {% for i in comments %}
+                <div class="row">
+                    <blockquote>
+                        On {{ i.date_submitted.strftime("%d %B, %Y") }}
+                        <strong>{{ i.user_id.username.capitalize() }}</strong> said:<br>
+                        <em>{{ i.text }}</em>
+                    </blockquote>
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

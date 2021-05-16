@@ -122,7 +122,8 @@ def get_games():
 @app.route("/game/<game_id>", methods=["GET", "POST"])
 def game(game_id):
     game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
-    return render_template("game.html", game=game)
+    comments = list(mongo.db.comments.find({"game_id": ObjectId(game_id)}))
+    return render_template("game.html", game=game, comments=comments)
 
 
 @app.route("/add_game", methods=["GET", "POST"])
@@ -183,7 +184,7 @@ def edit_game(game_id):
                 flash("Game Successfully Updated")
         game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
         genres = mongo.db.genres.find().sort("genre", 1)
-        return render_template("edit_game.html", game=game, genres=genres)          
+        return render_template("edit_game.html", game=game, genres=genres)         
 
 
 @app.route("/delete_game/<game_id>")
@@ -218,14 +219,14 @@ def add_comment(game_id):
             game = mongo.db.games.find_one(
                 {"_id": ObjectId(game_id)})
             comment = {
-                "game_id": game,
+                "game_id": game["_id"],
                 "user_id": username,
                 "date_submitted": datetime.datetime.utcnow(),
                 "text": request.form.get("comment")
             }
             mongo.db.comments.insert_one(comment)
             flash("Comment Successfully Posted!")
-            return render_template("game.html", game=game, comment=comment)   
+            return redirect(url_for("game", game_id=game_id))
 
 
 if __name__ == "__main__":
