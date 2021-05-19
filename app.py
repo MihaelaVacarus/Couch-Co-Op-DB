@@ -92,11 +92,16 @@ def sign_in():
 @app.route("/account/<username>", methods=["GET", "POST"])
 def account(username):
     # get the session user's username from the db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    user = mongo.db.users.find_one(
+        {"username": session["user"]})
+    print(user["_id"])
+    user_favourites = list(mongo.db.favourites.find(
+        {"user_id": ObjectId(user["_id"])}))
 
     if session["user"]:
-        return render_template("account.html", username=username)
+        return render_template(
+            "account.html", username=username,
+            user=user, user_favourites=user_favourites)
 
     return redirect(url_for("sign_in"))
 
@@ -227,6 +232,31 @@ def add_comment(game_id):
             mongo.db.comments.insert_one(comment)
             flash("Comment Successfully Posted!")
             return redirect(url_for("game", game_id=game_id))
+
+
+@app.route("/add_favourite/<game_id>")
+def add_favourite(game_id):
+    if session["user"]:
+        user = mongo.db.users.find_one(
+                {"username": session["user"]})
+        game = mongo.db.games.find_one(
+                {"_id": ObjectId(game_id)})
+        favourite = {
+            "game_id": game["_id"],
+            "user_id": user["_id"],
+            "game_name": game["name"],
+            "game_image": game["image_url"]
+        }
+        cursor = mongo.db.favourites.find_one(
+            {"game_id": game["_id"],
+                "user_id": user["_id"]})
+        print(cursor)
+        if cursor is not None:
+            flash("You've already added this game!")
+        else:
+            mongo.db.favourites.insert_one(favourite)
+            flash("Added to account's favourites!")
+    return redirect(url_for("game", game_id=game_id))
 
 
 if __name__ == "__main__":

@@ -8,8 +8,10 @@
                 <img src="{{ game.image_url }}" class="responsive-img" alt="Game cover">
                 <!-- Favorite and shop buttons for the game -->
                 <div id="book-buttons">
-                    <a href="#" class="btn-small waves-effect waves-light tooltipped" data-position="bottom"
-                        data-tooltip="Like" target="_blank"><i class="far fa-heart"></i></a>
+                    {% if session.user %}
+                        <a href="{{ url_for('add_favourite', game_id=game._id) }}" class="btn-small waves-effect waves-light tooltipped" data-position="bottom"
+                            data-tooltip="Like"><i class="far fa-heart"></i></a>
+                    {% endif %}
                     <a href="{{ game.shop_link }}" class="btn-small waves-effect waves-light tooltipped"
                         data-position="bottom" data-tooltip="Shop" target="_blank"><i class="fas fa-shopping-cart"></i></a>
                 </div>

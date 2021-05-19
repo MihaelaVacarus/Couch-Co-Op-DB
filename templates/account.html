@@ -2,15 +2,30 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
-        <!-- Sign up form for new users -->
-        <div class="col s12 m8 offset-m2">
-            <div class="card-panel">
-                <h3 class="center-align">
-                    {{ username }}'s Account
-                </h3>
-            </div>
+<h3 class="center-align">{{ username.capitalize() }}'s Account</h3>
+<div class="container">
+    <!-- Display games marked as favourite by the user in session -->
+    <blockquote>
+        <h5>My Favourite Games</h5>
+    </blockquote>
+    {% if user_favourites|length > 0 %}
+        <div class="row">
+            {% for fave in user_favourites %}
+                <div class="col s12 m6 l4">
+                    <div class="card z-depth-3">
+                        <div class="card-image">
+                            <img src="{{ fave.game_image }}" class="responsive-img" alt="Game cover">
+                        </div>
+                        <div class="card-action" id="game-name">
+                            <a href="{{ url_for('game', game_id=fave.game_id) }}" id="game=name">{{ fave.game_name }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    </div>
+        {% else %}
+            <h6>You haven't added any games as favourite yet. Have a look <a href="{{ url_for('get_games') }}">here</a> and save the ones you're interested in!</h6>
+    {% endif %}
+</div>
 
 {% endblock %}
