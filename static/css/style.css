@@ -137,12 +137,12 @@ main {
 }
 
 /* --------------------------------------------- Website Terms and Conditions */
-.terms-and-conds h6 {
+.website-legal-text h6 {
     text-transform: uppercase;
     font-weight: 500;
 }
 
-.terms-and-conds p {
+.website-legal-text p {
     text-align: justify;
 }
 
