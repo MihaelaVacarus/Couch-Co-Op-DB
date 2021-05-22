@@ -94,14 +94,15 @@ def account(username):
     # get the session user's username from the db
     user = mongo.db.users.find_one(
         {"username": session["user"]})
-    print(user["_id"])
     user_favourites = list(mongo.db.favourites.find(
         {"user_id": ObjectId(user["_id"])}))
-
+    user_comments = list(mongo.db.comments.find(
+        {"user_id": user}))
     if session["user"]:
         return render_template(
             "account.html", username=username,
-            user=user, user_favourites=user_favourites)
+            user=user, user_favourites=user_favourites,
+            user_comments=user_comments)
 
     return redirect(url_for("sign_in"))
 
@@ -170,7 +171,8 @@ def edit_game(game_id):
             if (session["user"] == game["created_by"] or
                     username["is_admin"] == "on"):
                 shop_link = (
-                    "https://store.steampowered.com/search/?term=" + request.form.get("name"))
+                    "https://store.steampowered.com/search/?term=" +
+                    request.form.get("name"))
                 update_game = {
                     "name": request.form.get("name"),
                     "description": request.form.get("description"),
@@ -189,7 +191,7 @@ def edit_game(game_id):
                 flash("Game Successfully Updated")
         game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
         genres = mongo.db.genres.find().sort("genre", 1)
-        return render_template("edit_game.html", game=game, genres=genres)         
+        return render_template("edit_game.html", game=game, genres=genres)
 
 
 @app.route("/delete_game/<game_id>")
@@ -225,6 +227,7 @@ def add_comment(game_id):
                 {"_id": ObjectId(game_id)})
             comment = {
                 "game_id": game["_id"],
+                "game_name": game["name"],
                 "user_id": username,
                 "date_submitted": datetime.datetime.utcnow(),
                 "text": request.form.get("comment")
@@ -250,7 +253,6 @@ def add_favourite(game_id):
         cursor = mongo.db.favourites.find_one(
             {"game_id": game["_id"],
                 "user_id": user["_id"]})
-        print(cursor)
         if cursor is not None:
             flash("You've already added this game!")
         else:

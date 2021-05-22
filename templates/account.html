@@ -28,4 +28,19 @@
     {% endif %}
 </div>
 
+<!-- Display comments posted by the user in session --> 
+<div class="container">
+    <blockquote>
+        <h5>My Comments</h5>
+    </blockquote>
+    <ul class="collection">
+        {% for comment in user_comments %}
+            <li class="collection-item avatar">
+                <h6 class="title">About <strong>{{ comment.game_name }} </strong>{{ comment.date_submitted.strftime("%d %B, %Y") }}:</h6>
+                <p>{{ comment.text }}</p>
+            </li>
+        {% endfor %}
+    </ul>    
+</div>
+
 {% endblock %}
