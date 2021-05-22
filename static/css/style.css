@@ -136,6 +136,16 @@ main {
     text-align: justify;
 }
 
+/* --------------------------------------------- Website Terms and Conditions */
+.terms-and-conds h6 {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.terms-and-conds p {
+    text-align: justify;
+}
+
 /* --------------------------------------------- Media Queries */
 @media screen and (max-width: 464px) {
     /* --------------------------------------------- Website navigation */
