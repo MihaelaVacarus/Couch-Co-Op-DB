@@ -261,6 +261,11 @@ def add_favourite(game_id):
     return redirect(url_for("game", game_id=game_id))
 
 
+@app.route("/terms_and_conditions")
+def terms_and_conditions():
+    return render_template("terms_and_conditions.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
