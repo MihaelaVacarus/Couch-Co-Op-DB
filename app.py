@@ -299,6 +299,16 @@ def not_found(error):
         not_found_image=not_found_image)
 
 
+@app.errorhandler(503)
+def service_unavailable(error):
+    # displays an error page and redirects the user
+    service_unavailable_image = url_for(
+        'static', filename='images/503Error.jpg')
+    return render_template(
+        "error-handlers/503.html", error=error,
+        service_unavailable_image=service_unavailable_image)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
