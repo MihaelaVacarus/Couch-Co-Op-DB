@@ -17,6 +17,14 @@ body {
     --yellow: #f7ba2e;
 }
 
+.positive-feedback {
+    color: #4caf50;
+}
+
+.negative-feedback {
+    color: #d50000;
+}
+
 /* --------------------------------------------- Website navigation */
 nav {
     background-color: var(--red);

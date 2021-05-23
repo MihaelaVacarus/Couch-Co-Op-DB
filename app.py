@@ -42,7 +42,7 @@ def sign_up():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Username already exists", "negative-feedback")
             return redirect(url_for("sign_up"))
 
         sign_up = {
@@ -55,7 +55,7 @@ def sign_up():
 
         # put the new user into session cookie
         session["user"] = request.form.get("username").lower()
-        flash("Signed Up Successfully!")
+        flash("Signed Up Successfully!", "positive-feedback")
         return redirect(url_for("account", username=session["user"]))
     return render_template("sign_up.html")
 
@@ -73,17 +73,19 @@ def sign_in():
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(
-                    request.form.get("username")))
+                    request.form.get("username")), "positive-feedback")
                 return redirect(url_for(
                     "account", username=session["user"]))
             else:
                 # invalid password match
-                flash("Username and/or password is incorrect")
+                flash("Username and/or password is incorrect",
+                    "negative-feedback")
                 return redirect(url_for("sign_in"))
 
         else:
             # username doesn't exist
-            flash("Username and/or password is incorrect")
+            flash("Username and/or password is incorrect",
+                "negative-feedback")
             return redirect(url_for("sign_in"))
 
     return render_template('sign_in.html')
@@ -107,7 +109,7 @@ def account(username):
                 user_comments=user_comments)
 
         return redirect(url_for("sign_in"))
-    flash("You need to be signed in to see your account!")
+    flash("You need to be signed in to see your account!", "negative-feedback")
     return redirect(url_for("sign_in"))
 
 
@@ -115,7 +117,7 @@ def account(username):
 def sign_out():
     # remove user from session cookies
     session.clear()
-    flash("You have been signed out")
+    flash("You have been signed out", "positive-feedback")
     return redirect(url_for("sign_in"))
 
 
@@ -159,11 +161,11 @@ def add_game():
                 "created_date": datetime.datetime.utcnow(),
             }
             mongo.db.games.insert_one(game)
-            flash("Game Successfully Submitted")
+            flash("Game Successfully Submitted", "positive-feedback")
             return redirect(url_for("get_games"))
         genres = mongo.db.genres.find().sort("genre", 1)
         return render_template("add_game.html", genres=genres)
-    flash("You need to be signed in to add a game!")
+    flash("You need to be signed in to add a game!", "negative-feedback")
     return redirect(url_for("sign_in"))
 
 
@@ -196,11 +198,11 @@ def edit_game(game_id):
                 mongo.db.games.update_one(
                     {"_id": ObjectId(game_id)},
                     {"$set": update_game})
-                flash("Game Successfully Updated")
+                flash("Game Successfully Updated", "positive-feedback")
         game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
         genres = mongo.db.genres.find().sort("genre", 1)
         return render_template("edit_game.html", game=game, genres=genres)
-    flash("You need to be signed in to edit a game!")
+    flash("You need to be signed in to edit a game!", "negative-feedback")
     return redirect(url_for("sign_in"))
 
 
@@ -215,9 +217,9 @@ def delete_game(game_id):
         if (session["user"] == game["created_by"] or
                 username["is_admin"] == "on"):
             mongo.db.games.delete_one({"_id": ObjectId(game_id)})
-            flash("Game Successfully Deleted")
+            flash("Game Successfully Deleted", "positive-feedback")
             return redirect(url_for("get_games"))
-    flash("You need to be signed in to delete a game!")
+    flash("You need to be signed in to delete a game!", "negative-feedback")
     return redirect(url_for("sign_in"))
 
 
@@ -247,9 +249,9 @@ def add_comment(game_id):
                 "text": request.form.get("comment")
             }
             mongo.db.comments.insert_one(comment)
-            flash("Comment Successfully Posted!")
+            flash("Comment Successfully Posted!", "positive-feedback")
             return redirect(url_for("game", game_id=game_id))
-    flash("You need to be signed in to leave a comment!")
+    flash("You need to be signed in to leave a comment!", "negative-feedback")
     return redirect(url_for("sign_in"))
 
 
@@ -271,12 +273,13 @@ def add_favourite(game_id):
             {"game_id": game["_id"],
                 "user_id": user["_id"]})
         if cursor is not None:
-            flash("You've already added this game!")
+            flash("You've already added this game!", "negative-feedback")
         else:
             mongo.db.favourites.insert_one(favourite)
-            flash("Added to account's favourites!")
+            flash("Added to account's favourites!", "positive-feedback")
         return redirect(url_for("game", game_id=game_id))
-    flash("You need to be signed in to add this game as favourite!")
+    flash("You need to be signed in to add this game as favourite!",
+        "negative-feedback")
     return redirect(url_for("sign_in"))
 
 
