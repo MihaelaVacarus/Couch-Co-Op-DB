@@ -290,6 +290,15 @@ def privacy_policy():
     return render_template("privacy_policy.html")
 
 
+@app.errorhandler(404)
+def not_found(error):
+    # displays an error page and redirects the user
+    not_found_image = url_for('static', filename='images/404Error.jpg')
+    return render_template(
+        "error-handlers/404.html", error=error,
+        not_found_image=not_found_image)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

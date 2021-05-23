@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="center-align">
+        <img src="{{ not_found_image }}" class="responsive-img" alt="404 Error">
+    </div>
+    <div class="center-align" style="padding-bottom: 25px;">
+        <a href="{{ url_for('get_games') }}" class="btn-large">Games</a>
+    </div>
+
+{% endblock %}
