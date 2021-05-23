@@ -146,6 +146,12 @@ main {
     text-align: justify;
 }
 
+/* --------------------------------------------- Privacy Policy */
+
+#use-information ul li {
+    list-style-type: disc;
+}
+
 /* --------------------------------------------- Media Queries */
 @media screen and (max-width: 464px) {
     /* --------------------------------------------- Website navigation */
