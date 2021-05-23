@@ -309,6 +309,16 @@ def service_unavailable(error):
         service_unavailable_image=service_unavailable_image)
 
 
+@app.errorhandler(500)
+def internal_server(error):
+    # displays an error page and redirects the user
+    internal_server_image = url_for(
+        'static', filename='images/500Error.jpg')
+    return render_template(
+        "error-handlers/500.html", error=error,
+        internal_server_image=internal_server_image)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
