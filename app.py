@@ -91,19 +91,23 @@ def sign_in():
 
 @app.route("/account/<username>", methods=["GET", "POST"])
 def account(username):
-    # get the session user's username from the db
-    user = mongo.db.users.find_one(
-        {"username": session["user"]})
-    user_favourites = list(mongo.db.favourites.find(
-        {"user_id": ObjectId(user["_id"])}))
-    user_comments = list(mongo.db.comments.find(
-        {"user_id": user}))
-    if session["user"]:
-        return render_template(
-            "account.html", username=username,
-            user=user, user_favourites=user_favourites,
-            user_comments=user_comments)
+    # defensive programming to prevent brute force
+    if session.get("user"):
+        # get the session user's username from the db
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        user_favourites = list(mongo.db.favourites.find(
+            {"user_id": ObjectId(user["_id"])}))
+        user_comments = list(mongo.db.comments.find(
+            {"user_id": user}))
+        if session["user"]:
+            return render_template(
+                "account.html", username=username,
+                user=user, user_favourites=user_favourites,
+                user_comments=user_comments)
 
+        return redirect(url_for("sign_in"))
+    flash("You need to be signed in to see your account!")
     return redirect(url_for("sign_in"))
 
 
@@ -134,40 +138,44 @@ def game(game_id):
 
 @app.route("/add_game", methods=["GET", "POST"])
 def add_game():
-    if request.method == "POST":
-        shop_link = (
-            "https://store.steampowered.com/search/?term=" +
-            request.form.get("name"))
-        game = {
-            "name": request.form.get("name"),
-            "description": request.form.get("description"),
-            "image_url": request.form.get("image_url"),
-            "number_players": request.form.get("number_players"),
-            "year_release": request.form.get("year_release"),
-            "genre": request.form.get("genre"),
-            "developer": request.form.get("developer"),
-            "publisher": request.form.get("publisher"),
-            "platforms": request.form.get("platforms"),
-            "shop_link": shop_link,
-            "created_by": session["user"],
-            "created_date": datetime.datetime.utcnow(),
-        }
-        mongo.db.games.insert_one(game)
-        flash("Game Successfully Submitted")
-        return redirect(url_for("get_games"))
-    genres = mongo.db.genres.find().sort("genre", 1)
-    return render_template("add_game.html", genres=genres)
+    # defensive programming to prevent brute force
+    if session.get("user"):
+        if request.method == "POST":
+            shop_link = (
+                "https://store.steampowered.com/search/?term=" +
+                request.form.get("name"))
+            game = {
+                "name": request.form.get("name"),
+                "description": request.form.get("description"),
+                "image_url": request.form.get("image_url"),
+                "number_players": request.form.get("number_players"),
+                "year_release": request.form.get("year_release"),
+                "genre": request.form.get("genre"),
+                "developer": request.form.get("developer"),
+                "publisher": request.form.get("publisher"),
+                "platforms": request.form.get("platforms"),
+                "shop_link": shop_link,
+                "created_by": session["user"],
+                "created_date": datetime.datetime.utcnow(),
+            }
+            mongo.db.games.insert_one(game)
+            flash("Game Successfully Submitted")
+            return redirect(url_for("get_games"))
+        genres = mongo.db.genres.find().sort("genre", 1)
+        return render_template("add_game.html", genres=genres)
+    flash("You need to be signed in to add a game!")
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/edit_game/<game_id>", methods=["GET", "POST"])
 def edit_game(game_id):
-    if session["user"]:
+    # defensive programming to prevent brute force
+    if session.get("user"):
         if request.method == "POST":
             username = mongo.db.users.find_one(
                 {"username": session["user"]})
             game = mongo.db.games.find_one(
                 {"_id": ObjectId(game_id)})
-
             if (session["user"] == game["created_by"] or
                     username["is_admin"] == "on"):
                 shop_link = (
@@ -192,11 +200,14 @@ def edit_game(game_id):
         game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
         genres = mongo.db.genres.find().sort("genre", 1)
         return render_template("edit_game.html", game=game, genres=genres)
+    flash("You need to be signed in to edit a game!")
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/delete_game/<game_id>")
 def delete_game(game_id):
-    if session["user"]:
+    # defensive programming to prevent brute force
+    if session.get("user"):
         username = mongo.db.users.find_one(
                 {"username": session["user"]})
         game = mongo.db.games.find_one(
@@ -206,6 +217,8 @@ def delete_game(game_id):
             mongo.db.games.delete_one({"_id": ObjectId(game_id)})
             flash("Game Successfully Deleted")
             return redirect(url_for("get_games"))
+    flash("You need to be signed in to delete a game!")
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -219,7 +232,8 @@ def search():
 
 @app.route("/add_comment/<game_id>", methods=["POST", "GET"])
 def add_comment(game_id):
-    if session["user"]:
+    # defensive programming to prevent brute force
+    if session.get("user"):
         if request.method == "POST":
             username = mongo.db.users.find_one(
                 {"username": session["user"]})
@@ -235,11 +249,14 @@ def add_comment(game_id):
             mongo.db.comments.insert_one(comment)
             flash("Comment Successfully Posted!")
             return redirect(url_for("game", game_id=game_id))
+    flash("You need to be signed in to leave a comment!")
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/add_favourite/<game_id>")
 def add_favourite(game_id):
-    if session["user"]:
+    # defensive programming to prevent brute force
+    if session.get("user"):
         user = mongo.db.users.find_one(
                 {"username": session["user"]})
         game = mongo.db.games.find_one(
@@ -258,7 +275,9 @@ def add_favourite(game_id):
         else:
             mongo.db.favourites.insert_one(favourite)
             flash("Added to account's favourites!")
-    return redirect(url_for("game", game_id=game_id))
+        return redirect(url_for("game", game_id=game_id))
+    flash("You need to be signed in to add this game as favourite!")
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/terms_and_conditions")
