@@ -120,7 +120,7 @@ To keep it simple and relatable to the videogames, a two colors palette has been
 ---
 
 ## Features
- 
+
 ### Existing Features
 The **features** on the website will:
 - Allow site visitor to register a user account and access more functionalities, such as: add, comment and mark games as favourite.
@@ -147,6 +147,69 @@ In addition, you may also use this section to discuss plans for additional featu
 
 ## Technologies Used
 
+### Languages Used
+- [Python3](https://www.python.org/)
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+
+### Database
+- [MongoDB](https://www.mongodb.com/)
+
+### Frameworks, Libraries & Programs Used
+- [Materialize](https://materializecss.com/)
+    - Materialize CSS was used to design some elements on the pages as well as help with styling and responsiveness.
+- [jQuery](https://jquery.com/)
+    - JavaScript library.
+- [Flask](https://palletsprojects.com/p/flask/)
+    - Lightweight WSGI web application framework.
+- [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
+    - Templating engine for Python.
+- [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
+    - Comprehensive WSGI web application library.
+- [PyMongo](https://pypi.org/project/pymongo/)
+    - Python tool for working with MongoDB
+- [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/)
+    - Flask-PyMongo bridges Flask and PyMongo and provides some convenience helpers.
+- [dnspython](https://www.dnspython.org/)
+    - Dnspython is a DNS toolkit for Python.
+- [Hover.css](https://ianlunn.github.io/Hover/)
+    - Hover.css was used for hoverable effects throughout the site.
+- [Favicon.io](https://favicon.io/)
+    - Favicon.io has been used to generate the favicon from an icon.
+- [EmojiTerra](https://emojiterra.com/)
+    - EmojiTerra was used for the couch and lamp emoji used for the favicon generation.
+- [Google Fonts](https://fonts.google.com/)
+    - Google font Roboto was chosen for the website and imported to the stylesheet. 
+- [Font Awesome](https://fontawesome.com/)
+    - Font Awesome was used throughout the sections to illustrate and complement the content, as well as improve UX.
+- [Git](https://git-scm.com/)
+    - Git was used for version control.
+- [GitHub](https://github.com/)
+    - GitHub was used to store the project's code.
+- [RandomKeygen](https://randomkeygen.com/)
+    - RandomKeygen was used to generate the passwords and keys for the website creation.
+- [Termly](https://termly.io/)
+    - Termly templates were used to create the privacy policy and the terms and conditions. 
+- [Figma](https://www.figma.com/)
+    - Figma was used to create the wireframes.
+- [Coolors](https://coolors.co/)
+    - Coolors was used to generate the colors palette used throughout the website.
+- [Collage Maker | BeFunky](https://www.befunky.com/)
+    - BeFunky was used to create the collage on the home page.
+- [Freepik](https://www.freepik.com/)
+    - Freepik images were used for the error handlers.
+- [Autoprefixer](https://autoprefixer.github.io/) 
+    - Used for adding CSS vendor prefixes to increase compatibility across browsers.
+
+### General Resources 
+1. [Code Institute Course Content](https://learn.codeinstitute.net/dashboard)
+2. Code Institute **Slack Community**
+3. [MongoDB Documentation](https://docs.mongodb.com/)
+4. [Python Documentation](https://www.python.org/doc/)
+5. [Pallets Projects](https://www.palletsprojects.com/)
+6. [W3Schools](https://www.w3schools.com/)
+7. [Stack Overflow](https://stackoverflow.com/)
 
 [Back to contents](#contents)
 
