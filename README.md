@@ -272,11 +272,26 @@ You will need to enter your own SECRET_KEY and ROOT info.
 
 ## Credits
 
+### Code
+- [StackOverflow](https://stackoverflow.com/questions/53438861/jinja2-using-images-in-html) solution for generating image path to be passed in Jinja template.
+- [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/) on how to implement categories for flash messages.
+- [StackOverflow](https://stackoverflow.com/questions/44569040/change-color-of-flask-flash-messages) solution for creating classes for flash messages.
+
 ### Content
+Content about the games has been retrieved from the individual game sites on [Steam](https://store.steampowered.com/) and [Team17](https://www.team17.com/).
 
 ### Media
+- [Overcooked Wiki Fandom](https://overcooked.fandom.com/wiki/Onion_King?file=Dancing_Onion_King.gif), namely user "Sunmarsh" for the Dancing Onion King gif.
+- [Freepik](https://www.freepik.com/) supplied images for the error handlers.
+- [Google Images](https://www.google.com/imghp?hl=EN).
+- [Font Awesome](https://fontawesome.com/) icons used throughout the website.
 
 ### Acknowledgements
+- My mentor Spencer Barriball for his guidance and feedback all along. 
+- Slack Community for reviewing my code and providing very useful advice and feedback.
+- Tutor Assistance at CI for helping me troubleshoot various issues.
+- Code Institute for the course contents that taught me the basics on which this project is built.
+- My family and friends for testing the features and giving me honest feedback.
 
 [Back to contents](#contents)
 
