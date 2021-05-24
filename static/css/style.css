@@ -118,6 +118,31 @@ body > div.row > form > div > div:nth-child(-n+2) > div > i.active {
         text-align: justify;
 }
 
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: #000;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-image {
+    position: absolute;
+    width: 200px;
+    height: auto;
+}
+
+#loader h6 {
+    position: absolute;
+    top: 70%;
+    text-transform: uppercase;
+}
+
 /* --------------------------------------------- Footer */
 .page-footer {
     background-color: var(--red);
