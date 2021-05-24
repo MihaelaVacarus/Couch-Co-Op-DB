@@ -1,4 +1,6 @@
 # Couch Co-Op DB
+![WebsiteSnapshot](static/images/WebsiteSnapshot.png)
+View the live project [here](https://couch-co-op-db.herokuapp.com/).
 
 Couch Co-Op DB is a website for people that enjoy playing couch co-op videogames. The idea for this project is to create a space where players can become registered users and add their favourite games, share tips and tricks and rate them. Site visitors can read about the games and purchase them via a hyperlink to Steam that will provide them with a 20% discount voucher.
 
