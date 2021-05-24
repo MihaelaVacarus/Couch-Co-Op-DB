@@ -223,6 +223,47 @@ In addition, you may also use this section to discuss plans for additional featu
 
 ## Deployment
 
+### Heroku 
+
+This project is hosted on [Heroku](https://couch-co-op-db.herokuapp.com/) and has been deployed by following the next steps:
+1. Create a requirements.txt file that collects all required dependencies, by typing in the CLI `pip3 freeze --local > requirements.txt`.
+2. Create a Procfile for Heroku by typing in the CLI: `echo web: python app.py > Procfile`. Delete blank line at the bottom of the Procfile to avoid problems when running the app on Heroku.
+3. Push both the requirements.txt and Procfile to GitHub.
+4. Log in to Heroku and click on "Create new app". Choose a unique name and use "dash" or "minus" instead of spaces and all lowercase letters. Select the region closest to you and click "Create app".
+5. Within the app in Heroku, navigate to the "Deploy" tab and, under "Deployment method", click GitHub. 
+6. Search for the repository name and, once it finds it, click "Connect" to connect the app.
+7. Next, navigate to the "Settings" tab and click on "Reveal Config Vars". Here, the variables stored in the env.py file need to be entered:
+    - IP: value of 0.0.0.0.
+    - PORT: value of 5000
+    - SECRET_KEY
+    - MONGO_URI
+    - MONGO_DBNAME: the value is the name of the database
+8. Finally, back to the "Deploy" tab, under "Automatic deploys", select "Enable Automatic Deploys" and click "Deploy Branch".
+9. The app is built and once it's done, a message will display "Your app was successfully deployed", then you can click View to launch it.
+
+### Locally
+
+You can clone this project and run it locally, by following the next steps:
+1. Clone this project's repo from [here](https://github.com/MihaelaVacarus/Couch-Co-Op-DB) by clicking on "Code" and copying `gh repo clone MihaelaVacarus/Couch-Co-Op-DB`.
+2. Open your IDE and paste it in the terminal. 
+3. Install the modules listed in the requirements.txt file by typing `pip3 install -r requirements.txt` in the CLI.
+4. In MongoDB, create a database called "couchCoOpDB" and replicate the collections specified in the [database section](#database).
+5. In the root directory of your project, create an env.py file and remember to add it to your .gitignore file. The content of this env.py file will be:
+
+```
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "[YOUR SECRET KEY]")
+os.environ.setdefault("MONGO_URI", "mongodb+srv://[YOUR ROOT]@cluster0.fw1gk.mongodb.net/couchCoOpDB?retryWrites=true&w=majority")
+os.environ.setdefault("MONGO_DNNAME", "couchCoOpDB")
+````
+
+You will need to enter your own SECRET_KEY and ROOT info.
+
+6. You can now run the app locally by typing `python3 app.py` in the CLI and open it in your browser.
+
 [Back to contents](#contents)
 
 ---
