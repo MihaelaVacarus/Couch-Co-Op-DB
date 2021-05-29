@@ -7,7 +7,7 @@
             <div class="col s12 l6">
                 <img src="{{ game.image_url }}" class="responsive-img" alt="Game cover" loading="lazy">
                 <!-- Favorite and shop buttons for the game -->
-                <div id="book-buttons">
+                <div class="game-buttons">
                     {% if session.user %}
                         <a href="{{ url_for('add_favourite', game_id=game._id) }}" class="btn-small waves-effect waves-light tooltipped" data-position="bottom"
                             data-tooltip="Like"><i class="far fa-heart"></i></a>
@@ -54,7 +54,7 @@
             </div>
             <!-- Edit and delete buttons for registered users -->
             {% if session.user|lower == game.created_by|lower or session.user|lower == 'admin' %}
-                <div class="right" id="book-buttons">
+                <div class="right game-buttons">
                     <a href="{{ url_for('edit_game', game_id=game._id) }}"
                         class="btn-small waves-effect waves-light tooltipped blue darken-1" data-position="top" data-tooltip="Edit"
                         target="_blank"><i class="far fa-edit"></i></a>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="col s12">
-                    <button type="submit" class="hvr-grow btn-small waves-effect right" id="add-comment">Post</i></button>
+                    <button type="submit" class="hvr-grow btn-small waves-effect right" id="add-comment">Post</button>
                 </div>
             </form>
         </div>

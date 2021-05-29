@@ -61,7 +61,7 @@ nav ul li {
 }
 
 /* --------------------------------------------- Individual game page */
-#book-buttons {
+.game-buttons {
     padding: 10px 10px 10px 0px;
 }
 
