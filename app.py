@@ -296,7 +296,7 @@ def privacy_policy():
 @app.errorhandler(404)
 def not_found(error):
     # displays an error page and redirects the user
-    not_found_image = url_for('static', filename='images/404Error.jpg')
+    not_found_image = url_for('static', filename='images/404-error.jpg')
     return render_template(
         "error-handlers/404.html", error=error,
         not_found_image=not_found_image)
@@ -306,7 +306,7 @@ def not_found(error):
 def service_unavailable(error):
     # displays an error page and redirects the user
     service_unavailable_image = url_for(
-        'static', filename='images/503Error.jpg')
+        'static', filename='images/503-error.jpg')
     return render_template(
         "error-handlers/503.html", error=error,
         service_unavailable_image=service_unavailable_image)
@@ -316,7 +316,7 @@ def service_unavailable(error):
 def internal_server(error):
     # displays an error page and redirects the user
     internal_server_image = url_for(
-        'static', filename='images/500Error.jpg')
+        'static', filename='images/500-error.jpg')
     return render_template(
         "error-handlers/500.html", error=error,
         internal_server_image=internal_server_image)
