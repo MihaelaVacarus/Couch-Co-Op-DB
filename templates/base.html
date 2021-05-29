@@ -153,6 +153,12 @@
     <!-- Materialize ompiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- Script for the loader -->
+    <script>
+        $(window).on("load", function () {
+            $("#loader").fadeOut("fast");
+        });
+    </script>
     {% block scripts %}
     {% endblock %}
 </body>

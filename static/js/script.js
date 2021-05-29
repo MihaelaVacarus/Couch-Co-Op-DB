@@ -34,11 +34,5 @@ $(document).ready(function(){
             }
         });
     }
-
-    // Function to show preloader
-    setTimeout(function() {
-        $('#loader').fadeIn(.1);
-        $('#loader').delay(2000).fadeOut(4000);
-    })
 });
 
