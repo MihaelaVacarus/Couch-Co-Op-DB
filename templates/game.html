@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row card-panel">
             <div class="col s12 l6">
-                <img src="{{ game.image_url }}" class="responsive-img" alt="Game cover">
+                <img src="{{ game.image_url }}" class="responsive-img" alt="Game cover" loading="lazy">
                 <!-- Favorite and shop buttons for the game -->
                 <div id="book-buttons">
                     {% if session.user %}
