@@ -203,6 +203,8 @@ In addition, you may also use this section to discuss plans for additional featu
     - Freepik images were used for the error handlers.
 - [Autoprefixer](https://autoprefixer.github.io/) 
     - Used for adding CSS vendor prefixes to increase compatibility across browsers.
+- [EZGIF.COM](https://ezgif.com/)
+    - Used to optimize gif size.
 
 ### General Resources 
 1. [Code Institute Course Content](https://learn.codeinstitute.net/dashboard)
