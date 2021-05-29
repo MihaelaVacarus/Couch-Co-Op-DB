@@ -40,13 +40,13 @@ nav ul li {
 }
 
 /* --------------------------------------------- Games page */
-#game-name p {
+.game-name p {
     color: var(--red);
     text-transform: uppercase;
     padding: 0;
 }
 
-#game-name p:hover {
+.game-name p:hover {
     color: #000;
 }
 
