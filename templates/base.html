@@ -5,7 +5,8 @@
     <!-- Meta data -->
     <meta charset="UTF-8">
     <meta name="description" content="Couch co-op games website for players to review, comment and add their own">
-    <meta name="keywords" content="videogame, games, couch co-op, gaming, playstation, player, players, cooperative game, game, videogames">
+    <meta name="keywords"
+        content="videogame, games, couch co-op, gaming, playstation, player, players, cooperative game, game, videogames">
     <meta name="author" content="Mihaela Vacarus">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,9 +16,12 @@
         crossorigin="anonymous" type="text/css" />
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon_io/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon_io/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon_io/favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="{{ url_for('static', filename='favicon_io/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ url_for('static', filename='favicon_io/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ url_for('static', filename='favicon_io/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ url_for('static', filename='favicon_io/site.webmanifest') }}">
 
     <!-- Materialize compiled and minified CSS -->
@@ -36,7 +40,8 @@
     <!-- Website preloader -->
     <div id="loader">
         <h6 class="white-text">Loading...</h6>
-        <img class="loader-image" src="static/images/dancing-onion-king.webp" alt="Overcooked Onion King dancing" loading="lazy">
+        <img class="loader-image" src="static/images/dancing-onion-king.webp" alt="Overcooked Onion King dancing"
+            loading="lazy">
     </div>
     <header>
         <!-- Top navbar -->
@@ -62,16 +67,18 @@
 
         <!-- Mobile side navbar -->
         <ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align">Couch Co-Op DB</h4></li>
+            <li>
+                <h4 class="center-align">Couch Co-Op DB</h4>
+            </li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('get_games') }}">Games</a></li>
             {% if session.user %}
-                <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
-                <li><a href="{{ url_for('add_game') }}">Add Game</a></li>
-                <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
+            <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
+            <li><a href="{{ url_for('add_game') }}">Add Game</a></li>
+            <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
             {% else %}
-                <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
-                <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
+            <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+            <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
             {% endif %}
         </ul>
     </header>
@@ -105,6 +112,7 @@
     <footer class="page-footer">
         <div class="container">
             <div class="row" id="footer-sections">
+                <!-- Social media section -->
                 <div class="col l4 s12">
                     <h5 class="white-text">FOLLOW US</h5>
                     <ul id="social-links">
@@ -112,21 +120,22 @@
                                 aria-label="Find me on Twitch"><i class="fab fa-twitch"></i></a></li>
                         <li><a class="hvr-grow grey-text text-lighten-3" href="https://store.steampowered.com/"
                                 target="_blank" aria-label="Find me on Steam"><i class="fab fa-steam"></i></a></li>
-                        <li><a class="hvr-grow grey-text text-lighten-3" href="https://twitter.com/"
-                                target="_blank" aria-label="Find me on Twitter"><i
-                                    class="fab fa-twitter-square"></i></a></li>
+                        <li><a class="hvr-grow grey-text text-lighten-3" href="https://twitter.com/" target="_blank"
+                                aria-label="Find me on Twitter"><i class="fab fa-twitter-square"></i></a></li>
                         <li><a class="hvr-grow grey-text text-lighten-3" href="https://www.youtube.com/" target="_blank"
                                 aria-label="Find me on YouTube"><i class="fab fa-youtube-square"></i></a></li>
                     </ul>
                 </div>
+                <!-- About section -->
                 <div class="col l4 s12">
                     <h5 class="white-text">WHO ARE WE</h5>
                     <p class="grey-text text-lighten-4">
                         My name is Ada and I run this website with my brother Dennis.
-                        We enjoy streaming our gaming sessions on Twitch and we decided to create 
+                        We enjoy streaming our gaming sessions on Twitch and we decided to create
                         a community to share tips and tricks around couch co-op games.
                     </p>
                 </div>
+                <!-- Legal content section -->
                 <div class="col l4 s12">
                     <h6>
                         <a class="hvr-glow grey-text text-lighten-3"
@@ -139,9 +148,9 @@
                             Policy</a>
                     </h6>
                 </div>
-                </div>
-                </div>
+            </div>
         </div>
+        <!-- Copyright info -->
         <div class="footer-copyright">
             <div class="container">
                 &copy; 2021 Couch Co-Op Games
