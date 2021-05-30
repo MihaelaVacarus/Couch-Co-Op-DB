@@ -54,3 +54,10 @@ I managed to improve performance the score by reducing the size of the images an
 
 ### WEB accessibility by Level Access
 - The compliance result score is 92%.
+
+## Manual Testing ##
+
+### Testing User Stories
+- This part of the testing can be found in a separate document [here](/workspace/Couch-Co-Op-DB/static/testing/testing-user-stories.pdf).
+
+### Testing Functionalities
