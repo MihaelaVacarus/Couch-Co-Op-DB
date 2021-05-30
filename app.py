@@ -23,9 +23,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-# Render Home template
 
-
+# render home template
 @app.route("/")
 @app.route("/home")
 def home():
@@ -78,14 +77,14 @@ def sign_in():
                     "account", username=session["user"]))
             else:
                 # invalid password match
-                flash("Username and/or password is incorrect",
+                flash(
+                    "Username and/or password is incorrect",
                     "negative-feedback")
                 return redirect(url_for("sign_in"))
 
         else:
             # username doesn't exist
-            flash("Username and/or password is incorrect",
-                "negative-feedback")
+            flash("Username and/or password is incorrect", "negative-feedback")
             return redirect(url_for("sign_in"))
 
     return render_template('sign_in.html')
@@ -123,6 +122,7 @@ def sign_out():
 
 # Games CRUD functionality
 
+# display all games on get_games template
 @app.route("/get_games")
 def get_games():
     games = list(mongo.db.games.find())
@@ -131,6 +131,7 @@ def get_games():
         games=games)
 
 
+# find game and show its related comments
 @app.route("/game/<game_id>", methods=["GET", "POST"])
 def game(game_id):
     game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
@@ -138,14 +139,17 @@ def game(game_id):
     return render_template("game.html", game=game, comments=comments)
 
 
+# add new game to the db
 @app.route("/add_game", methods=["GET", "POST"])
 def add_game():
     # defensive programming to prevent brute force
     if session.get("user"):
         if request.method == "POST":
+            # create shopping link based on the game name
             shop_link = (
                 "https://store.steampowered.com/search/?term=" +
                 request.form.get("name"))
+            # gather game info from the form
             game = {
                 "name": request.form.get("name"),
                 "description": request.form.get("description"),
@@ -160,6 +164,7 @@ def add_game():
                 "created_by": session["user"],
                 "created_date": datetime.datetime.utcnow(),
             }
+            # write new game info in the db
             mongo.db.games.insert_one(game)
             flash("Game Successfully Submitted", "positive-feedback")
             return redirect(url_for("get_games"))
@@ -169,6 +174,7 @@ def add_game():
     return redirect(url_for("sign_in"))
 
 
+# edit a game from the db
 @app.route("/edit_game/<game_id>", methods=["GET", "POST"])
 def edit_game(game_id):
     # defensive programming to prevent brute force
@@ -178,11 +184,14 @@ def edit_game(game_id):
                 {"username": session["user"]})
             game = mongo.db.games.find_one(
                 {"_id": ObjectId(game_id)})
+            # allows edit only if created by user in session or admin
             if (session["user"] == game["created_by"] or
                     username["is_admin"] == "on"):
+                # create shopping link based on the game name
                 shop_link = (
                     "https://store.steampowered.com/search/?term=" +
                     request.form.get("name"))
+                # gather game info from the form
                 update_game = {
                     "name": request.form.get("name"),
                     "description": request.form.get("description"),
@@ -195,6 +204,7 @@ def edit_game(game_id):
                     "platforms": request.form.get("platforms"),
                     "shop_link": shop_link
                 }
+                # update job info in the db
                 mongo.db.games.update_one(
                     {"_id": ObjectId(game_id)},
                     {"$set": update_game})
@@ -206,6 +216,7 @@ def edit_game(game_id):
     return redirect(url_for("sign_in"))
 
 
+# delete a game from the db
 @app.route("/delete_game/<game_id>")
 def delete_game(game_id):
     # defensive programming to prevent brute force
@@ -214,6 +225,7 @@ def delete_game(game_id):
                 {"username": session["user"]})
         game = mongo.db.games.find_one(
                 {"_id": ObjectId(game_id)})
+        # allows delete only if created by user in session or admin
         if (session["user"] == game["created_by"] or
                 username["is_admin"] == "on"):
             mongo.db.games.delete_one({"_id": ObjectId(game_id)})
@@ -223,6 +235,7 @@ def delete_game(game_id):
     return redirect(url_for("sign_in"))
 
 
+# search a game in the db by text query
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -232,15 +245,19 @@ def search():
         "get_games.html", games=games)
 
 
+# allows registered users to post a comment
 @app.route("/add_comment/<game_id>", methods=["POST", "GET"])
 def add_comment(game_id):
     # defensive programming to prevent brute force
     if session.get("user"):
         if request.method == "POST":
+            # find username
             username = mongo.db.users.find_one(
                 {"username": session["user"]})
+            # find game
             game = mongo.db.games.find_one(
                 {"_id": ObjectId(game_id)})
+            # gather comment info to write in the db
             comment = {
                 "game_id": game["_id"],
                 "game_name": game["name"],
@@ -248,6 +265,7 @@ def add_comment(game_id):
                 "date_submitted": datetime.datetime.utcnow(),
                 "text": request.form.get("comment")
             }
+            # write comment to the db
             mongo.db.comments.insert_one(comment)
             flash("Comment Successfully Posted!", "positive-feedback")
             return redirect(url_for("game", game_id=game_id))
@@ -255,44 +273,54 @@ def add_comment(game_id):
     return redirect(url_for("sign_in"))
 
 
+# allows registered users to add a game as favourite
 @app.route("/add_favourite/<game_id>")
 def add_favourite(game_id):
     # defensive programming to prevent brute force
     if session.get("user"):
+        # find user
         user = mongo.db.users.find_one(
                 {"username": session["user"]})
+        # find game
         game = mongo.db.games.find_one(
                 {"_id": ObjectId(game_id)})
+        # gather favourite info to write in the db
         favourite = {
             "game_id": game["_id"],
             "user_id": user["_id"],
             "game_name": game["name"],
             "game_image": game["image_url"]
         }
+        # check if the game is already marked as favourite
         cursor = mongo.db.favourites.find_one(
             {"game_id": game["_id"],
                 "user_id": user["_id"]})
         if cursor is not None:
             flash("You've already added this game!", "negative-feedback")
         else:
+            # if game is not favourited, then it writes the info to the db
             mongo.db.favourites.insert_one(favourite)
             flash("Added to account's favourites!", "positive-feedback")
         return redirect(url_for("game", game_id=game_id))
-    flash("You need to be signed in to add this game as favourite!",
+    flash(
+        "You need to be signed in to add this game as favourite!",
         "negative-feedback")
     return redirect(url_for("sign_in"))
 
 
+# route to display terms and conditions template
 @app.route("/terms_and_conditions")
 def terms_and_conditions():
     return render_template("terms_and_conditions.html")
 
 
+# route to display privacy policy template
 @app.route("/privacy_policy")
 def privacy_policy():
     return render_template("privacy_policy.html")
 
 
+# error handler for errors type 404
 @app.errorhandler(404)
 def not_found(error):
     # displays an error page and redirects the user
@@ -302,6 +330,7 @@ def not_found(error):
         not_found_image=not_found_image)
 
 
+# error handler for errors type 503
 @app.errorhandler(503)
 def service_unavailable(error):
     # displays an error page and redirects the user
@@ -312,6 +341,7 @@ def service_unavailable(error):
         service_unavailable_image=service_unavailable_image)
 
 
+# error handler for errors type 500
 @app.errorhandler(500)
 def internal_server(error):
     # displays an error page and redirects the user
