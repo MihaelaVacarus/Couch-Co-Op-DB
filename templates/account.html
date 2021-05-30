@@ -1,47 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align">{{ username.capitalize() }}'s Account</h3>
-<div class="container">
-    <!-- Display games marked as favourite by the user in session -->
-    <blockquote>
-        <h5>My Favourite Games</h5>
-    </blockquote>
-    {% if user_favourites|length > 0 %}
-        <div class="row">
-            {% for fave in user_favourites %}
-                <div class="col s12 m6 l4">
-                    <div class="hvr-grow card z-depth-4">
-                        <a href="{{ url_for('game', game_id=fave.game_id) }}">
-                            <div class="card-image">
-                                <img src="{{ fave.game_image }}" loading="lazy" alt="Game cover">
-                                <div class="card-action game-name">
-                                    <p class="card-content">{{ fave.game_name }}</p>
+    <h3 class="center-align">{{ username.capitalize() }}'s Account</h3>
+    <div class="container">
+        <!-- Display games marked as favourite by the user in session -->
+        <blockquote>
+            <h5>My Favourite Games</h5>
+        </blockquote>
+        {% if user_favourites|length > 0 %}
+            <div class="row">
+                {% for fave in user_favourites %}
+                    <div class="col s12 m6 l4">
+                        <div class="hvr-grow card z-depth-4">
+                            <a href="{{ url_for('game', game_id=fave.game_id) }}">
+                                <div class="card-image">
+                                    <img src="{{ fave.game_image }}" loading="lazy" alt="Game cover">
+                                    <div class="card-action game-name">
+                                        <p class="card-content">{{ fave.game_name }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
-        {% else %}
-            <h6>You haven't added any games as favourite yet. Have a look <a href="{{ url_for('get_games') }}">here</a> and save the ones you're interested in!</h6>
-    {% endif %}
-</div>
+                {% endfor %}
+            </div>
+            {% else %}
+                <h6>You haven't added any games as favourite yet. Have a look <a href="{{ url_for('get_games') }}">here</a> and save the ones you're interested in!</h6>
+        {% endif %}
+    </div>
 
-<!-- Display comments posted by the user in session --> 
-<div class="container">
-    <blockquote>
-        <h5>My Comments</h5>
-    </blockquote>
-    <ul class="collection">
-        {% for comment in user_comments %}
-            <li class="collection-item avatar">
-                <h6 class="title">About <strong>{{ comment.game_name }} </strong>{{ comment.date_submitted.strftime("%d %B, %Y") }}:</h6>
-                <p>{{ comment.text }}</p>
-            </li>
-        {% endfor %}
-    </ul>    
-</div>
+    <!-- Display comments posted by the user in session --> 
+    <div class="container">
+        <blockquote>
+            <h5>My Comments</h5>
+        </blockquote>
+        <ul class="collection">
+            {% for comment in user_comments %}
+                <li class="collection-item avatar">
+                    <h6 class="title">About <strong>{{ comment.game_name }} </strong>{{ comment.date_submitted.strftime("%d %B, %Y") }}:</h6>
+                    <p>{{ comment.text }}</p>
+                </li>
+            {% endfor %}
+        </ul>    
+    </div>
 
 {% endblock %}
