@@ -221,7 +221,7 @@ In addition, you may also use this section to discuss plans for additional featu
 
 ## Testing
 
-All testing for the website has been collected [here](testing.md).
+All testing for the website has been collected [here](static/testing/TESTING.md).
 
 [Back to contents](#contents)
 
