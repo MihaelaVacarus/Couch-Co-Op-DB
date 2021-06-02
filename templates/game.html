@@ -56,8 +56,8 @@
             {% if session.user|lower == game.created_by|lower or session.user|lower == 'admin' %}
                 <div class="right game-buttons">
                     <a href="{{ url_for('edit_game', game_id=game._id) }}"
-                        class="btn-small waves-effect waves-light tooltipped blue darken-1" data-position="top" data-tooltip="Edit"
-                        target="_blank"><i class="far fa-edit"></i></a>
+                        class="btn-small waves-effect waves-light tooltipped blue darken-1" data-position="top"
+                        data-tooltip="Edit"><i class="far fa-edit"></i></a>
                     <button data-target="{{ game._id }}" class="btn-small waves-effect waves-light tooltipped red accent-4 modal-trigger"
                         data-position="top" data-tooltip="Delete"><i class="far fa-trash-alt"></i></button>
                     <!-- Modal structure to confirm or cancel deletion -->
