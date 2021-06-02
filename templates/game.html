@@ -77,23 +77,25 @@
     </div>
 
     <!-- Add comment section -->
-    <div class="container">
-        <div class="row card-panel z-depth-3">
-            <form class="col s12" method="POST" action="{{ url_for('add_comment', game_id=game._id) }}">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="far fa-comment-dots prefix"></i>
-                        <textarea id="comment" name="comment" minlength="3" class="materialize-textarea validate"
-                            placeholder="Share tips and tricks" required></textarea>
-                        <label for="comment"></label>
+    {% if session.user %}
+        <div class="container">
+            <div class="row card-panel z-depth-3">
+                <form class="col s12" method="POST" action="{{ url_for('add_comment', game_id=game._id) }}">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="far fa-comment-dots prefix"></i>
+                            <textarea id="comment" name="comment" minlength="3" class="materialize-textarea validate"
+                                placeholder="Share tips and tricks" required></textarea>
+                            <label for="comment"></label>
+                        </div>
                     </div>
-                </div>
-                <div class="col s12">
-                    <button type="submit" class="hvr-grow btn-small waves-effect right" id="add-comment">Post</button>
-                </div>
-            </form>
+                    <div class="col s12">
+                        <button type="submit" class="hvr-grow btn-small waves-effect right" id="add-comment">Post</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    {% endif %}
     
     <!-- Game's comments section -->
     <div class="container">
