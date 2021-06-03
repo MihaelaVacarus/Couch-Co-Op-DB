@@ -92,6 +92,7 @@ def sign_in():
 
 @app.route("/account/<username>", methods=["GET", "POST"])
 def account(username):
+    logged_in_user = session.get("user")
     # defensive programming to prevent brute force
     if session.get("user"):
         # get the session user's username from the db
@@ -103,7 +104,7 @@ def account(username):
             {"user_id": user}))
         if session["user"]:
             return render_template(
-                "account.html", username=username,
+                "account.html", username=logged_in_user,
                 user=user, user_favourites=user_favourites,
                 user_comments=user_comments)
 
