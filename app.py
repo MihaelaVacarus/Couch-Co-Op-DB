@@ -258,16 +258,20 @@ def add_comment(game_id):
             game = mongo.db.games.find_one(
                 {"_id": ObjectId(game_id)})
             # gather comment info to write in the db
-            comment = {
-                "game_id": game["_id"],
-                "game_name": game["name"],
-                "user_id": username,
-                "date_submitted": datetime.datetime.utcnow(),
-                "text": request.form.get("comment")
-            }
-            # write comment to the db
-            mongo.db.comments.insert_one(comment)
-            flash("Comment Successfully Posted!", "positive-feedback")
+            text = request.form.get("comment").strip()
+            if text:
+                comment = {
+                    "game_id": game["_id"],
+                    "game_name": game["name"],
+                    "user_id": username,
+                    "date_submitted": datetime.datetime.utcnow(),
+                    "text": request.form.get("comment")
+                }
+                # write comment to the db
+                mongo.db.comments.insert_one(comment)
+                flash("Comment Successfully Posted!", "positive-feedback")
+                return redirect(url_for("game", game_id=game_id))
+            flash("You cannot post empty comments!", "negative-feedback")
             return redirect(url_for("game", game_id=game_id))
     flash("You need to be signed in to leave a comment!", "negative-feedback")
     return redirect(url_for("sign_in"))
