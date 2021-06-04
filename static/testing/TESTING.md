@@ -18,6 +18,8 @@ View the live project [here](https://couch-co-op-db.herokuapp.com/).
 - [Manual Testing](#manual-testing)
     - [Testing User Stories](#testing-user-stories)
     - [Testing Functionalities](#testing-functionalities)
+        - [Devices Used for Testing](#devices-used-for-testing)
+        - [Further Manual Testing](#further-manual-testing)
 
 - [Bugs](#bugs)
 
@@ -61,3 +63,103 @@ I managed to improve performance the score by reducing the size of the images an
 - This part of the testing can be found in a separate document [here](./testing-user-stories.pdf)
 
 ### Testing Functionalities
+| Home page|    Yes/No     |  
+| ------------- |:-------------:|
+| Logo redirects to Home| Y |
+| Navigation displays different options if a user is signed in vs is signed out| Y |
+| Navigation collapses to a hamburger menu on smaller devices and remaines fixed to the top | Y |
+| All navigation links redirect to their corresponding pages | Y |
+| Parallax slides as intended | Y |
+| Links in intro redirect to the corresponding pages | Y |
+| Footer social media and legal content links redirect to their corresponding sites | Y |
+| Footer sections are fully responsive on smaller devices | Y |
+| Loader works as intended while browsing pages that take longer to load | Y |
+---
+| Games page|    Yes/No     |  
+| ------------- |:-------------:|
+| Search bar searches by name, genre and platform | Y |
+| Clear button resets the search and display all games newly| Y |
+| Hover effects on game cards work as intended| Y | 
+| Game cards are displayed at an appropriate size and responsiveness works as expected| Y | 
+| Link on game cards redirect to the corresponding game page| Y | 
+| If search is has zero hits, flash message displays informing of the search results| Y | 
+---
+| Game page|    Yes/No     |  
+| ------------- |:-------------:|
+| Page is responsive and all intended information is displayed | Y |
+| For guests and registered visitors (RV), shopping link displays and works as intended.|Y|
+| For RV, favourite button displays and adds game as favourite.| Y | 
+| If a user already marked a game as favourite, this cannot be added again and a flash message informs of this.| Y | 
+| If a user marks a game as a favourite, a flash message informs the user that the game has been added successfuly.| Y | 
+| Edit and delete buttons only display for RV that added that same game previously, as intended. | Y |
+| Delete button prompts a modal asking for confirmation. Clicking Yes deletes the game, while clicking Cancel cancels the action of deletion. | Y | 
+| Comment input field can only post comments from RV and it's only visible to them.| Y |
+| Comment input field validates correctly according to min characters length and posts on the dashboard below.| Y |
+| Users cannot post empty comments.|Y| 
+| Dashboard with all comments belonging to each game display as intended. | Y |
+| If a guest tries to edit the URL to post a comment without being registered, a flash message will display informing the guest would need to sign in first and redirects to the sign in page.|Y|
+| Dashboard with all comments belonging to each game display as intended. | Y |
+---
+| Edit game page|    Yes/No     |  
+| ------------- |:-------------:|
+| If a guest tries to edit the URL to edit a game, a flash message will display informing the guest would need to sign in first and redirects to the sign in page.| Y |
+| All fields validate correctly as intended.|Y|
+| Cancel button works as expected and redirects user to the general games page.| Y | 
+| The Update Game button works as expected and updates game details, then flashes a confirmation message to the user.| Y | 
+---
+| My Account page|    Yes/No     |  
+| ------------- |:-------------:|
+| If a guest tries to edit the URL to access My Acccount, a flash message will display informing the guest would need to sign in first and redirects to the sign in page.|Y|
+| Games marked as favourite by the user in session display correctly and can be accessed by clicking on them.| Y |
+| Comments posted by the user in session display as intended and show to which games they belong.| Y |
+---
+| Add Game page|    Yes/No     |  
+| ------------- |:-------------:|
+| If a guest tries to edit the URL to access Add Game, a flash message will display informing the guest would need to sign in first and redirects to the sign in page.| Y | 
+| All fields validate correctly as intended.| Y | 
+| Submit Game button works as intended and add the new game to the db.|Y| 
+| When a game is submitted, a flash message informs the user that the game has been added successfuly and redirects to the Games page.| Y | 
+---
+| Sign Out page|    Yes/No     |  
+| ------------- |:-------------:|
+| Sign Out functionality removes the user from session cookies and closes the session.| Y |
+---
+| Sign In page|    Yes/No     |  
+| ------------- |:-------------:|
+| Input fields validate as intended.| Y |
+| If username or password are incorrect, a flash message will inform the user.| Y |
+| Sign In button signs in the user correctly.| Y |
+---
+| Sign Up page|    Yes/No     |  
+| ------------- |:-------------:|
+| Input fields validate as intended.| Y |
+| If username already exists, a flash message informs the user and clears the form.| Y |
+| Once a valid username and password are entered, the account is created by clicking the Sign Up.| Y |
+--- 
+| Website terms of use page|    Yes/No     |  
+| ------------- |:-------------:|
+| Page is responsive on all device sizes.| Y |
+| Links within the text redirect to other pages as intended.| Y |
+| Clicking on the email will prompt the user to write an email.| Y |
+| Scrollspy works as intended to navigate the several sections.| Y |
+--- 
+| Website privacy policy|    Yes/No     |  
+| ------------- |:-------------:|
+| Page is responsive on all device sizes.| Y |
+| Links within the text redirect to other pages as intended.| Y |
+| Clicking on the email will prompt the user to write an email.| Y |
+| Scrollspy works as intended to navigate the several sections.| Y |
+---
+| Error handler for 404 errors|    Yes/No     |  
+| ------------- |:-------------:|
+| 404 error template displays when trying to access unfound pages.| Y |
+| 404 error template provides a link to redirect RV and guests back to Games.| Y |
+
+I couldn't reproduce the environment to test errors 500 and 503, but these have been created the same way as 404 error template, and that route tested ok, so I safely assume the other two would as well.
+
+#### Devices Used for Testing
+- Tested on Macbook Pro and Iphone 12.
+
+#### Further Manual Testing
+- Tested by several friends and family. 
+- Code and website reviewed by Code Institute Slack community.
