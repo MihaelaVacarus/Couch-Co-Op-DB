@@ -24,6 +24,7 @@ Couch Co-Op DB is a website for people that enjoy playing couch co-op videogames
 - [Testing](#testing)
 - [Deployment](#deployment)
 - [Credits](#credits)
+    - [Code solutions and inspiration](#code-solutions-and-inspiration)
     - [Content](#content)
     - [Media](#media)
     - [Acknowledgements](#acknowledgements)
@@ -276,10 +277,18 @@ You will need to enter your own SECRET_KEY and ROOT info.
 
 ## Credits
 
-### Code
+### Code solutions and inspiration
 - [StackOverflow](https://stackoverflow.com/questions/53438861/jinja2-using-images-in-html) solution for generating image path to be passed in Jinja template.
 - [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/) on how to implement categories for flash messages.
 - [StackOverflow](https://stackoverflow.com/questions/44569040/change-color-of-flask-flash-messages) solution for creating classes for flash messages.
+- Code Institute's course content for teaching me how to build the CRUD functionalities on the site and for providing the user authentication code, which can also be checked here in the [Task Manager App](https://github.com/MihaelaVacarus/Task-Manager-App) that I coded following the Code Institute course content.
+- [Learn Flask for Python](https://www.youtube.com/watch?v=Z1RJmh_OqeA) crash course on YouTube explaining how to use Flask with Python for code explanations.
+- [Simon Vardy](https://github.com/simonjvardy/the-reading-room) and [Sean Young](https://github.com/seanyoung247/Plum) for project inspiration and ideas on layout.
+- [WebP](https://developers.google.com/speed/webp) documentation for fixing the gif I had as preloader explaining that converting gif to WebP format is more efficient and improves performance.
+- Nishan Chathuranga Wickramarathna's [article](https://nishanc.medium.com/how-to-add-a-gif-pre-loader-to-your-website-dcfd29bd055d) about how to add a preloader easily to websites.
+- Code Institute's [Sample README](https://github.com/Code-Institute-Solutions/SampleREADME/blob/master/README.md) that provided me with a good base to build my README on.
+- Adam Pritchard's [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) for explaining solutions on how to layout the README.
+- [Materialize](https://materializecss.com/getting-started.html) small code snippets and documentation on how the framework is implemented, which helped me to easily style and make the website responsive.
 
 ### Content
 Content about the games has been retrieved from the individual game sites on [Steam](https://store.steampowered.com/) and [Team17](https://www.team17.com/).
@@ -291,7 +300,7 @@ Content about the games has been retrieved from the individual game sites on [St
 - [Font Awesome](https://fontawesome.com/) icons used throughout the website.
 
 ### Acknowledgements
-- My mentor Spencer Barriball for his guidance and feedback all along. 
+- My mentor Spencer Barriball for his guidance and feedback all along.
 - Slack Community for reviewing my code and providing very useful advice and feedback.
 - Tutor Assistance at CI for helping me troubleshoot various issues.
 - Code Institute for the course contents that taught me the basics on which this project is built.
