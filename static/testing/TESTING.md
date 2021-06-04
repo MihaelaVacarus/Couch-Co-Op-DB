@@ -26,19 +26,19 @@ View the live project [here](https://couch-co-op-db.herokuapp.com/).
 
 ## Automated Testing ##
 
-### W3C Markup Validator
+### [W3C Markup Validator](https://validator.w3.org/)
 - No errors found. Validator throws a few warnings about some sections lacking headings, but those can be safely ignored.
 
-### W3C CSS Validation Service
+### [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
 - No errors found. Validator throws three warnings which can be safely ignored. 
 
-### PEP8 online
+### [PEP8 online](http://pep8online.com/)
 - No errors found. 
 
-### JSHint
+### [JSHint](https://jshint.com/)
 - No errors found.
 
-### Chrome DevTools Lighthouse
+### [Chrome DevTools Lighthouse](https://developers.google.com/web/tools/lighthouse)
 - For Mobile the scores are: 
     - Performance: 80
     - Accessibility: 91
@@ -52,14 +52,16 @@ I managed to improve performance the score by reducing the size of the images an
     - Best Practices: 87
     - SEO: 82
 
-### Responsive Viewer
+### [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb?hl=en)
 - I run the extension on each page of the website and responsiveness checks OK. 
 
-### Mobile Friendly Test Google Search Console
+### [Mobile Friendly Test Google Search Console](https://search.google.com/test/mobile-friendly)
 - The result is that the page is mobile friendly.
 
-### WEB accessibility by Level Access
+### [WEB accessibility by Level Access](https://www.webaccessibility.com/)
 - The compliance result score is 92%.
+
+[Back to contents](#contents)
 
 ## Manual Testing ##
 
@@ -168,6 +170,8 @@ I couldn't reproduce the environment to test errors 500 and 503, but these have 
 - Tested by several friends and family. 
 - Code and website reviewed by Code Institute Slack community.
 
+[Back to contents](#contents)
+
 ## Bugs ##
 ---
 | Bug Description| Comments | Resolved (Yes/No) |  
@@ -178,3 +182,5 @@ I couldn't reproduce the environment to test errors 500 and 503, but these have 
 | Validation for commenting input field allows comments made up of just spaces to be posted.| This was fixed by using the strip Python method. | Y |
 | When adding a new game to the DB, for the image URL field, there is not validation to check if indeed it is a URL.| I am looking into implementing regex to fix this. | N |
 | The same game can be added several times to the DB.| I discussed this with my mentor and as much I could implement some defensive programming, there are many ways to go around it. For example, users could submit a game named differently just by a character and that produce the same result. Unfortunately, there is not a unique feature to identify each game and determine based on that if it already exists or not. | N |
+
+[Back to contents](#contents)
