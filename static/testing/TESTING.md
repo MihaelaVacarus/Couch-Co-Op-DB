@@ -10,6 +10,7 @@ View the live project [here](https://couch-co-op-db.herokuapp.com/).
     - [W3C Markup Validator](#w3c-markup-validator)
     - [W3C CSS Validation Service](#w3c-css-validation-service)
     - [PEP8 online](#pep8-online)
+    - [JSHint](#jshint)
     - [Chrome DevTools Lighthouse](#chrome-devtools-lighthouse)
     - [Responsive Viewer](#responsive-viewer)
     - [Mobile Friendly Test Google Search Console](#mobile-friendly-test-google-search-console)
@@ -33,6 +34,9 @@ View the live project [here](https://couch-co-op-db.herokuapp.com/).
 
 ### PEP8 online
 - No errors found. 
+
+### JSHint
+- No errors found.
 
 ### Chrome DevTools Lighthouse
 - For Mobile the scores are: 
