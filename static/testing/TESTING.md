@@ -163,3 +163,14 @@ I couldn't reproduce the environment to test errors 500 and 503, but these have 
 #### Further Manual Testing
 - Tested by several friends and family. 
 - Code and website reviewed by Code Institute Slack community.
+
+## Bugs ##
+---
+| Bug Description| Comments | Resolved (Yes/No) |  
+| ------------- |:-------------:| :-------------:|
+| On the edit game functionality, even if a user doesn't make any changes to the game details, and then clicks **Update Game**, a flash message would still display reading "Game Successfully Updated".| I discussed this with my mentor and he said it's not a real bug and can be left as it is.| Y |
+| If a user in session edits the URL to http://couch-co-op-db.herokuapp.com/sign_out, the user will be signed out without even clicking the Sign Out button.| I discussed this with my mentor and he said it's not a real bug and can be left as it is.| Y |
+| If the URL in the Account page is changed to another username, the flash message would display the changed name, although the profile would still be the one belonging to the user in session. | e.g. http://couch-co-op-db.herokuapp.com/account/admin changed to http://couch-co-op-db.herokuapp.com/account/mihaela would show admin's account but the headline would read "Mihaela's Account". | Y |
+| Validation for commenting input field allows comments made up of just spaces to be posted.| This was fixed by using the strip Python method. | Y |
+| When adding a new game to the DB, for the image URL field, there is not validation to check if indeed it is a URL.| I am looking into implementing regex to fix this. | N |
+| The same game can be added several times to the DB.| I discussed this with my mentor and as much I could implement some defensive programming, there are many ways to go around it. For example, users could submit a game named differently just by a character and that produce the same result. Unfortunately, there is not a unique feature to identify each game and determine based on that if it already exists or not. | N |
