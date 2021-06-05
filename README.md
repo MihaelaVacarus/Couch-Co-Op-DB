@@ -161,6 +161,18 @@ I achieve this by:
 - Enabling users to add new games and edit their entries. 
 - Linking the game store to each game directly on the website.
 
+#### Security Features
+- Defensive programming to prevente brute force access to unauthorized pages, only available for registered visitors. 
+- Verification of the username, preventing visitors to register more than one profile per username.
+- Username and password validation before logging in.
+- Form validation for input fields.
+- Enable **only** users that posted a specific game to also edit and delete it.
+- Reserve the rights to edit and delete to Admin user as well, so the website can be managed.
+- If a user clicks Delete game by mistake, a modal is shown to request the user to confirm deletion or cancel the action.
+- Buttons reserved for registered visitors are hidden from unregistered guests.
+- Verification if a user has already marked a game as favourite to prevent from adding the same game multiple times.
+- Error handlers to explain 404, 500 and 503 error types to visitors and redirect them to another place on the website.
+
 ### Features Left to Implement
 - Create a dashboard to provide site visitors with statistics about all the games.
 - Implement a star rating functionality that allows the users to upvote and downvote games depending on their preferences.
