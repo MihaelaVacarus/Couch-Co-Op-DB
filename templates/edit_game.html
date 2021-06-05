@@ -42,8 +42,9 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="far fa-calendar prefix"></i>
-                    <input type="text" id="year_release" name="year_release" class="validate datepicker" value="{{ game.year_release }}" required>
-                    <label for="year_release">Year of Release</label>
+                    <input type="text" id="year_release" name="year_release" pattern="^(19|20)\d{2}$"
+                        class="validate" value="{{ game.year_release }}" required>
+                    <label for="year_release">Enter year of Release (e.g. 2015)</label>
                 </div>
             </div>
             <!-- Input for genre -->
