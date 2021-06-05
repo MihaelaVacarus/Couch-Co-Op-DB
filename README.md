@@ -225,6 +225,8 @@ In addition, you may also use this section to discuss plans for additional featu
     - Used for adding CSS vendor prefixes to increase compatibility across browsers.
 - [EZGIF.COM](https://ezgif.com/)
     - Used to optimize gif size.
+- [dbdiagram.io](https://dbdiagram.io/home)
+    - Used to create the database diagram for README.md
 
 ### General Resources 
 1. [Code Institute Course Content](https://learn.codeinstitute.net/dashboard)
