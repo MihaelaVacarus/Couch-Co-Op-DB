@@ -65,6 +65,12 @@ The **goal** of this project is to build a website that allows people passionate
 The wireframes for the website have been created with [Figma](https://www.figma.com/) and are available [here](https://www.figma.com/file/Z4haTyThhzKwdy75zFupo5/Couch-Co-Op-DB?node-id=0%3A1).
 Tablet and mobile devices share the same layout, while a separate design has been created for the desktop views. 
 
+While working on the project, I made some small adjustments to the original wireframes:
+- On the **Home** page, the order of the menu has been changed to **Games Sign Up Sign In** instead of **Games Already a member? Sign In Sign Up**.
+- The Admin UI has been simplified and instead of having another tab called **Manage Games**, the Admin user has been granted rights to edit and/or delete any games, regardless by whom these have been added. This made more sense to keep the design cleaner.
+- For each game's page, the mark as favourite and shopping link buttons have been placed to the left instead, and the comment functionality button has been renamed to **POST**. 
+- For both pages of legal content, ToU and Privacy Policy, a scrollspy has been added to improve the UX.
+
 #### **Database** ####
 
 #### - users collection
