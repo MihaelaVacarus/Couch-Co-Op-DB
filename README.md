@@ -155,13 +155,10 @@ I achieve this by:
 - Enabling users to add new games and edit their entries. 
 - Linking the game store to each game directly on the website.
 
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
-
 ### Features Left to Implement
 - Create a dashboard to provide site visitors with statistics about all the games.
 - Implement a star rating functionality that allows the users to upvote and downvote games depending on their preferences.
+- Add additional functionalities to allow users to remove a game from favourites, edit and/or deleted their own comments.
 
 [Back to contents](#contents)
 
