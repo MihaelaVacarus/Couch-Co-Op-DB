@@ -74,6 +74,7 @@ User ID|_id|ObjectId()
 Username|username|String
 Password|password|String
 Admin|is_admin|String
+Date Joined|date_joined|Date
 
 #### - games collection
 **Title**|**Key in Collection**|**Data Type**
@@ -82,33 +83,51 @@ Game ID|_id|ObjectId()
 Name|name|String
 Description|description|String
 Image|image_url|String
-Players|number_players|Integer
-Release Year|year_release|Integer
+Players|number_players|String
+Release Year|year_release|String
 Genre|genre|String
 Developer|developer|String
 Publisher|publisher|String
 Platforms|platforms|String
 Shop|shop_link|String
+Created by|created_by|String
+Created date|created_date|Date
 
 #### - favourites collection
 **Title**|**Key in Collection**|**Data Type**
 :-----:|:-----:|:-----:
-Game ID|_id|ObjectId()
-User ID|_id|ObjectId()
+Favourite ID|_id|ObjectId()
+Game ID|game_id|ObjectId()
+User ID|user_id|ObjectId()
+Game Name|game_name|String
+Game Image|game_image|String
 
 #### - comments collection
 **Title**|**Key in Collection**|**Data Type**
 :-----:|:-----:|:-----:
-Game ID|_id|ObjectId()
-User ID|_id|ObjectId()
-Date|date_submitted|Timestamp
-Comment|comment|String
+Comment ID|_id|ObjectId()
+Game ID|game_id|ObjectId()
+Game Name|game_name|String
+User ID|user_id|Object
+Date|date_submitted|Date
+Comment|text|String
+
+#### - genres collection
+This collection was created manually to populate the frontend dropdown for labelling a game with a specific genre. 
+**Title**|**Key in Collection**|**Data Type**
+:-----:|:-----:|:-----:
+Genre ID|_id|ObjectId()
+Genre|genre|String
+
+Options displayed are: **action, adventure, party, puzzle, simulation, survival, horror, sports**.
+
+A diagram of the database can also be checked for more details [here](static/images/database-diagram.png).
 
 #### Data Types ####
 
 - ObjectId
+- Object
 - String
-- Int32
 - Date
 
 #### **Fonts** ####
