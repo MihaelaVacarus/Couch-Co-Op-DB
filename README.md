@@ -325,6 +325,7 @@ You will need to enter your own SECRET_KEY and ROOT info.
 - Code Institute's [Sample README](https://github.com/Code-Institute-Solutions/SampleREADME/blob/master/README.md) that provided me with a good base to build my README on.
 - Adam Pritchard's [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) for explaining solutions on how to layout the README.
 - [Materialize](https://materializecss.com/getting-started.html) small code snippets and documentation on how the framework is implemented, which helped me to easily style and make the website responsive.
+- [Solution](https://stackoverflow.com/questions/4374185/regular-expression-match-to-test-for-a-valid-year) posted by RoR user on StackOverflow to implement pattern validation on year of release input field for the game forms.
 
 ### Content
 Content about the games has been retrieved from the individual game sites on [Steam](https://store.steampowered.com/) and [Team17](https://www.team17.com/).
