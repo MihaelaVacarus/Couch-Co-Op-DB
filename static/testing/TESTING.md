@@ -182,5 +182,6 @@ I couldn't reproduce the environment to test errors 500 and 503, but these have 
 | Validation for commenting input field allows comments made up of just spaces to be posted.| This was fixed by using the strip Python method. | Y |
 | When adding a new game to the DB, for the image URL field, there is not validation to check if indeed it is a URL.| I am looking into implementing regex to fix this. | N |
 | The same game can be added several times to the DB.| I discussed this with my mentor and as much I could implement some defensive programming, there are many ways to go around it. For example, users could submit a game named differently just by a character and that produce the same result. Unfortunately, there is not a unique feature to identify each game and determine based on that if it already exists or not. | N |
+| If the URL for editing a game is modified by a user in session to modify a game not added by that same user, the URL still redirects to the edit game page. However, the changes do not save.| This does not seem to be a bug, as it would not save any changes, but it is something I would like to look into, once I have more knowledge of Python routes. |N|
 
 [Back to contents](#contents)
