@@ -161,7 +161,8 @@ I managed to improve performance the score by reducing the size of the images an
 | 404 error template displays when trying to access unfound pages.| Y |
 | 404 error template provides a link to redirect RV and guests back to Games.| Y |
 
-I couldn't reproduce the environment to test errors 500 and 503, but these have been created the same way as 404 error template, and that route tested ok, so I safely assume the other two would as well.
+- I couldn't reproduce the environment to test errors 500 and 503, but these have been created the same way as 404 error template, and that route tested ok, so I safely assume the other two would as well.
+- CRUD functionality works as expected for Admin user, that is, with all the enabled rights.
 
 #### Devices Used for Testing
 - Tested on Macbook Pro and Iphone 12.
