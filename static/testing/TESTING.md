@@ -53,7 +53,7 @@ I managed to improve performance the score by reducing the size of the images an
     - SEO: 82
 
 ### [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb?hl=en)
-- I run the extension on each page of the website and responsiveness checks OK. 
+- I ran the extension on each page of the website and responsiveness checks OK. 
 
 ### [Mobile Friendly Test Google Search Console](https://search.google.com/test/mobile-friendly)
 - The result is that the page is mobile friendly.
@@ -71,28 +71,28 @@ I managed to improve performance the score by reducing the size of the images an
 ### Testing Functionalities
 | Home page|    Yes/No     |  
 | ------------- |:-------------:|
-| Logo redirects to Home| Y |
-| Navigation displays different options if a user is signed in vs is signed out| Y |
-| Navigation collapses to a hamburger menu on smaller devices and remaines fixed to the top | Y |
-| All navigation links redirect to their corresponding pages | Y |
-| Parallax slides as intended | Y |
-| Links in intro redirect to the corresponding pages | Y |
-| Footer social media and legal content links redirect to their corresponding sites | Y |
-| Footer sections are fully responsive on smaller devices | Y |
-| Loader works as intended while browsing pages that take longer to load | Y |
+| Logo redirects to Home.| Y |
+| Navigation displays different options if a user is signed in vs is signed out.| Y |
+| Navigation collapses to a hamburger menu on smaller devices and remains fixed to the top. | Y |
+| All navigation links redirect to their corresponding pages. | Y |
+| Parallax slides as intended. | Y |
+| Links in intro redirect to the corresponding pages. | Y |
+| Footer social media and legal content links redirect to their corresponding sites. | Y |
+| Footer sections are fully responsive on smaller devices. | Y |
+| Loader works as intended while browsing pages that take longer to load. | Y |
 ---
 | Games page|    Yes/No     |  
 | ------------- |:-------------:|
-| Search bar searches by name, genre and platform | Y |
-| Clear button resets the search and display all games newly| Y |
-| Hover effects on game cards work as intended| Y | 
-| Game cards are displayed at an appropriate size and responsiveness works as expected| Y | 
-| Link on game cards redirect to the corresponding game page| Y | 
-| If search is has zero hits, flash message displays informing of the search results| Y | 
+| Search bar searches by name, genre and platform. | Y |
+| Clear button resets the search and display all games newly..| Y |
+| Hover effects on game cards work as intended.| Y | 
+| Game cards are displayed at an appropriate size and responsiveness works as expected.| Y | 
+| Link on game cards redirect to the corresponding game page.| Y | 
+| If search is has zero hits, flash message displays informing of the search results.| Y | 
 ---
 | Game page|    Yes/No     |  
 | ------------- |:-------------:|
-| Page is responsive and all intended information is displayed | Y |
+| Page is responsive and all intended information is displayed.| Y |
 | For guests and registered visitors (RV), shopping link displays and works as intended.|Y|
 | For RV, favourite button displays and adds game as favourite.| Y | 
 | If a user already marked a game as favourite, this cannot be added again and a flash message informs of this.| Y | 
