@@ -299,11 +299,11 @@ import os
 os.environ.setdefault("IP", "0.0.0.0")
 os.environ.setdefault("PORT", "5000")
 os.environ.setdefault("SECRET_KEY", "[YOUR SECRET KEY]")
-os.environ.setdefault("MONGO_URI", "mongodb+srv://[YOUR ROOT]@cluster0.fw1gk.mongodb.net/couchCoOpDB?retryWrites=true&w=majority")
-os.environ.setdefault("MONGO_DNNAME", "couchCoOpDB")
+os.environ.setdefault("MONGO_URI", "[YOUR MONGO URI"])
+os.environ.setdefault("MONGO_DBNAME", "couchCoOpDB")
 ````
 
-You will need to enter your own SECRET_KEY and ROOT info.
+You will need to enter your own SECRET_KEY and MONGO_URI info.
 
 6. You can now run the app locally by typing `python3 app.py` in the CLI and open it in your browser.
 
