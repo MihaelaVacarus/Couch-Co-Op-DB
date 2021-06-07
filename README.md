@@ -239,7 +239,7 @@ I achieve this by:
 - [Autoprefixer](https://autoprefixer.github.io/) 
     - Used for adding CSS vendor prefixes to increase compatibility across browsers.
 - [EZGIF.COM](https://ezgif.com/)
-    - Used to optimize gif size.
+    - Used to optimize the preloader size and convert the format from gif to webp.
 - [dbdiagram.io](https://dbdiagram.io/home)
     - Used to create the database diagram for README.md
 
