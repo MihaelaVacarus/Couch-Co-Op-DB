@@ -176,7 +176,7 @@ I achieve this by:
 ### Features Left to Implement
 - Create a dashboard to provide site visitors with statistics about all the games.
 - Implement a star rating functionality that allows the users to upvote and downvote games depending on their preferences.
-- Add additional functionalities to allow users to remove a game from favourites, edit and/or deleted their own comments.
+- Add additional functionalities to allow users to remove a game from favourites, and edit and/or delete their own comments.
 
 [Back to contents](#contents)
 
